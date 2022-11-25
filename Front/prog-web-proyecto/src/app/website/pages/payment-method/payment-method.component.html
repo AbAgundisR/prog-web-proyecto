@@ -1,0 +1,60 @@
+<!-- Formulario del usuario  -->
+<body>
+  <main>
+    <form [formGroup]="form" class="form">
+      <div id="Encabezado">
+        <h1>Datos de pago</h1>
+        <br />
+      </div>
+
+      <div class="form_container">
+        <input formControlName="card_name" type="text" class="form_input" placeholder="NOMBRE"/>
+        <div class="messages" [class.active]="cardNameFiel!.touched && cardNameFiel!.invalid">
+          <p>
+            <strong *ngIf="cardNameFiel!.touched && cardNameFiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="card_number" type="number" class="form_input" placeholder="NÚMERO DE TARJETA"/>
+        <div class="messages" [class.active]="cardNumberFiel!.touched && cardNumberFiel!.invalid">
+          <p>
+            <strong *ngIf="cardNumberFiel!.touched && cardNumberFiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="card_expiration_date" type="text" class="form_input" placeholder="FECHA DE EXPIRACIÓN"/>
+        <div class="messages" [class.active]="cardExpirationFiel!.touched && cardExpirationFiel!.invalid">
+          <p>
+            <strong *ngIf="cardExpirationFiel!.touched && cardExpirationFiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="card_cvc" type="number" class="form_input" placeholder="CVC"/>
+        <div class="messages" [class.active]="cardCvcFiel!.touched && cardCvcFiel!.invalid">
+          <p>
+            <strong *ngIf="cardCvcFiel!.touched && cardCvcFiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+      <div class="form_container">
+        <button (click)="save()" type="submit" class="form_cta">
+          <span>Guardar</span>
+        </button>
+      </div>
+    </form>
+  </main>
+</body>

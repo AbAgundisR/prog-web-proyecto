@@ -1,0 +1,178 @@
+.tittle{
+  display: flex;
+  justify-content: center;
+
+  h1{
+    margin-top: 40px;
+    margin-bottom: 0px;
+  }
+}
+
+.buy-now{
+  background-color: #fcda05;
+  height: 40px;
+  padding: 0 20px;
+  font-size: 15px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 15px;
+}
+
+.buy-now:hover{
+background-color: #393d46;
+color: white;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.payment{
+  display: flex;
+  gap: 20px;
+
+  .name {
+    width: 300px;
+  }
+
+  .number{
+    width: 300px;
+  }
+
+  .date{
+    width: 200px;
+  }
+
+  .cvc{
+    width: 100px;
+  }
+}
+
+.datos-envio{
+  display: flex;
+  gap: 20px;
+}
+
+.headers{
+  text-align: left;
+}
+
+.text{
+  text-align: left;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  // border-collapse: collapse;
+  // border: 3px solid #222831;
+}
+
+thead th:nth-child(1) {
+  width: 30%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 30%;
+}
+thead th:nth-child(4) {
+  width: 20%;
+}
+
+th, td {
+  padding: 10px;
+}
+
+
+/* Escritorio  */
+@media screen and (min-width: 768px) {
+  .container{
+    margin: 50px 300px;
+    padding: 30px;
+    border: 1px solid gray;
+  }
+
+  .payment{
+    display: flex;
+    gap: 20px;
+  }
+
+  .datos-envio{
+    display: flex;
+    gap: 20px;
+
+    .input1 {
+      width: 320px;
+    }
+
+    .input2 {
+      width: 205px;
+    }
+  }
+}
+
+/* Tablets y phablets */
+@media screen and (min-width: 576px) and (max-width: 767px){
+  .container{
+    margin: 50px;
+    padding: 30px;
+    border: 1px solid gray;
+  }
+  .payment{
+    display: flex;
+    flex-direction: column;
+  }
+  .datos-envio{
+    display: flex;
+    gap: 20px;
+
+    .input1 {
+      width: 230px;
+    }
+
+    .input2 {
+      width: 145px;
+    }
+  }
+}
+
+/* Teléfonos */
+@media screen and (max-width: 575px){
+  .container{
+    margin: 40px;
+    padding: 30px 20px;
+    border: 1px solid gray;
+  }
+  .payment{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .datos-envio{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .input1 {
+      width: 340px;
+    }
+
+    .input2 {
+      width: 340px;
+    }
+  }
+}
+
+.row-left{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+}

@@ -1,0 +1,99 @@
+<!-- Formulario del usuario  -->
+<body>
+  <main>
+    <form [formGroup]="form" class="form">
+      <div id="Encabezado">
+        <h1>Información del usuario</h1>
+        <br />
+      </div>
+
+      <div class="form_container">
+        <input formControlName="username" type="text" class="form_input" placeholder="USERNAME" name="username"/>
+        <div></div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="email" type="text" class="form_input" placeholder="EMAIL" name="email"/>
+        <div class="messages" [class.active]="emailField!.touched && emailField!.invalid">
+          <p>
+            <strong *ngIf="emailField!.touched && emailField!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="full_name" type="text" class="form_input" placeholder="NOMBRE" name="full_name"/>
+        <div class="messages" [class.active]="fullNameField!.touched && fullNameField!.invalid">
+          <p>
+            <strong
+              *ngIf="fullNameField!.touched && fullNameField!.hasError('required')">
+              Este campo es requerido
+              </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="is_superuser" type="text" class="form_input" placeholder="¿ES SUPERUSUARIO?" name="password"/>
+        <div class="messages" [class.active]="isSuperuserFiel!.touched && isSuperuserFiel!.invalid">
+          <p>
+            <strong
+              *ngIf="isSuperuserFiel!.touched && isSuperuserFiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="phone" type="number" class="form_input" placeholder="TELEFONO" name="phone"/>
+        <div></div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="address_line_1" type="text" class="form_input" placeholder="DIRECCION" name="address_line_1"/>
+        <div></div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="address_line_2" type="text" class="form_input" placeholder="COLONIA" name="address_line_2"/>
+        <div></div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="address_cp" type="number" class="form_input" placeholder="CÓDIGO POSTAL" name="address_cp"/>
+        <div class="messages" [class.active]="cpFiel!.touched && cpFiel!.invalid">
+          <p>
+            <strong *ngIf="cpFiel!.touched && cpFiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="address_city" type="text" class="form_input" placeholder="CIUDAD" name="address_city"/>
+        <div></div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="address_state" type="text" class="form_input" placeholder="ESTADO" name="address_state"/>
+        <div></div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="address_country" type="text" class="form_input" placeholder="PAÍS" name="address_country"/>
+        <div></div>
+      </div>
+
+      <div class="form_container">
+        <button (click)="save()" type="submit" class="form_cta">
+          <span *ngIf="!user_id">Crear usuario</span>
+          <span *ngIf="user_id">Editar usuario</span>
+        </button>
+      </div>
+    </form>
+  </main>
+</body>

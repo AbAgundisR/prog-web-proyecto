@@ -1,0 +1,51 @@
+<div class="tittle">
+  <h1>Pago del pedido</h1>
+  <p *ngIf="order.status == 'PAGADO.'">Su pedido llegará en 3 días</p>
+</div>
+<div class="container">
+
+  <div class="pedido">
+    <div>
+      <h4>Número de orden</h4>
+      <p>{{order_number}}</p>
+      <h4>Estatus</h4>
+      <p>{{order.status}}</p>
+    </div>
+    <div>
+      <h4>Fecha</h4>
+      <p>{{fechaF}}</p>
+    </div>
+  </div>
+
+  <br>
+  <hr>
+
+  <h3>Datos del pago</h3>
+  <div class="payment">
+    <div>
+      <p>Nombre del propietario</p>
+      <input class="name" type="text" disabled value="{{cards[0].card_name}}">
+    </div>
+    <div>
+      <p>Número de tarjeta</p>
+      <input class="number" type="text" disabled value="{{cards[0].card_number}}">
+    </div>
+  </div>
+  <div class="payment">
+    <div>
+      <p>Fecha de vencimiento</p>
+      <input class="date" type="text" disabled value="{{cards[0].card_expiration_date}}">
+    </div>
+    <div>
+      <p>CVV</p>
+      <input class="cvc" type="text" disabled value="{{cards[0].card_cvc}}">
+    </div>
+  </div>
+</div>
+<div *ngIf="order.status != 'PAGADO.'" class="button-container">
+  <button type="button" class="buy-now" (click)="pay()">Pagar</button>
+</div>
+<div *ngIf="order.status == 'PAGADO.'" class="button-container">
+  <button type="button" class="buy-now" (click)="backHome()">Ir al inicio</button>
+</div>
+

@@ -1,0 +1,163 @@
+.cart{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0px;
+}
+
+.buy-now{
+  background-color: #fcda05;
+  height: 40px;
+  padding: 0 20px;
+  font-size: 15px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 15px;
+}
+
+.buy-now:hover{
+background-color: #393d46;
+color: white;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.container{
+  margin: 50px 300px;
+  padding: 30px;
+  border: 1px solid gray;
+  border-radius: 15px;
+}
+
+.headers{
+  text-align: left;
+}
+
+.text{
+  text-align: left;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  // border-collapse: collapse;
+  // border: 3px solid #222831;
+}
+
+thead th:nth-child(1) {
+  width: 30%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 30%;
+}
+thead th:nth-child(4) {
+  width: 20%;
+}
+
+th, td {
+  padding: 10px;
+}
+
+/* Escritorio  */
+@media screen and (min-width: 768px) {
+  .container{
+    margin: 50px 300px;
+    padding: 30px;
+    border: 1px solid gray;
+  }
+}
+
+/* Tablets y phablets */
+@media screen and (min-width: 576px) and (max-width: 767px){
+  .container{
+    margin: 50px;
+    padding: 30px;
+    border: 1px solid gray;
+}
+}
+
+/* Teléfonos */
+@media screen and (max-width: 575px){
+  .container{
+    margin: 40px;
+    padding: 30px 20px;
+    border: 1px solid gray;
+  }
+}
+
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.table{
+    padding: 0 20px;
+}
+
+.row-right{
+    display: flex;
+    float: right;
+    align-items: center;
+    height: 100%;
+}
+
+.row-left{
+    display: flex;
+    float: left;
+    align-items: center;
+}
+
+.table-row{
+    height: 200px;
+}
+
+.clear{
+    clear: both;
+}
+
+.img img{
+    height: 200px;
+}
+
+.img{
+    height: 200px;
+}
+
+.delete img{
+    height: 50px;
+}
+
+.name{
+    width: auto;
+    flex-grow: 1;
+}
+
+.price, .stock, .total, .delete{
+    padding: 0 25px;
+}
+
+.price, .stock, .total{
+    width: 60px;
+}
+
+.delete{
+    width: 50px;
+}
+
+#header2{
+    width: 430px;
+}
+
+#header1{
+    padding-left: 200px;
+}

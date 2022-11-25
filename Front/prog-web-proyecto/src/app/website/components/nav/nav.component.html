@@ -1,0 +1,166 @@
+<div class="nav">
+  <div class="nav-left">
+    <a href="" id="logo-link">
+      <img src="assets/img/logo.png" alt="" class="logo-mini">
+    </a>
+  </div>
+
+  <div class="nav-center" id="centro">
+    <div class="nav responsive-hide-2">
+      <!--dropdown menu-->
+      <div class="nav-left">
+        <div class="dropdown-collection responsive-resize">
+          <button class="dropdown-button" aria-haspopup="listbox" aria-labelledby="dropdown-label"
+            (click)="toggleDropdown()" (clickOutside)="dropdownOpen = false">
+            <span id="dropdown-label" class="responsive-hide">Categoría</span><span
+              class="dropdown-value">{{currentValue}}</span>
+          </button>
+          <ul class="dropdown-list" role="listbox" aria-expanded="false" [ngClass]="{'dropdown-open' : dropdownOpen}">
+            <li [routerLink]="['/home']" [ngClass]="{'selected' : currentValue === 'TODAS'}" (click)="select('TODAS')">
+              TODAS</li>
+            <li *ngFor="let category of categories" [ngClass]="{'selected' : currentValue === category}" tabindex="0"
+              (click)="select(category.name)" role="option" [innerHTML]="category.name"
+              [routerLink]="['/category', category.id]">
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!--dropdown menu-->
+
+      <div class="nav-center">
+        <input [(ngModel)]="productName" type="text" class="search">
+      </div>
+
+      <div class="nav-right">
+        <a (click)="productSearch(productName)" id="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="34" height="34"
+            viewBox="0 0 24 24" stroke-width="2" stroke="#222831" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <circle cx="10" cy="10" r="7"></circle>
+            <line x1="21" y1="21" x2="15" y2="15"></line>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <button class="menu-button" (click)="toogleTopbar()">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="34" height="34"
+      viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="#222831"></path>
+      <circle cx="10" cy="10" r="7"></circle>
+      <line x1="21" y1="21" x2="15" y2="15"></line>
+    </svg>
+  </button>
+
+  <div class="nav-right menu-responsivo">
+    <a (click)="redirectUser()" class="tool-button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44"
+        viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <circle cx="12" cy="7" r="4" />
+        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+      </svg>
+      <span class="username">{{userName}}</span>
+    </a>
+    <a routerLink="my-cart" class="tool-button cart">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="44" height="44"
+        viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <circle cx="6" cy="19" r="2"></circle>
+        <circle cx="17" cy="19" r="2"></circle>
+        <path d="M17 17h-11v-14h-2"></path>
+        <path d="M6 5l14 1l-1 7h-13"></path>
+      </svg>
+      <!-- <span class="counter">{{counter}}</span> -->
+    </a>
+  </div>
+
+  <button class="menu-button" (click)="toogleMenu()">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="34" height="34"
+      viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <line x1="4" y1="6" x2="20" y2="6"></line>
+      <line x1="4" y1="12" x2="20" y2="12"></line>
+      <line x1="4" y1="18" x2="20" y2="18"></line>
+    </svg>
+  </button>
+
+  <div class="topbar">
+    <div class="nav">
+      <!--dropdown menu-->
+      <div class="nav-left">
+        <button (click)="toogleTopbar()">X</button>
+        <div class="dropdown-collection responsive-resize">
+          <button class="dropdown-button" aria-haspopup="listbox" aria-labelledby="dropdown-label"
+            (click)="toggleDropdown()" (clickOutside)="dropdownOpen = false">
+            <span id="dropdown-label" class="responsive-hide">Categoría</span><span
+              class="dropdown-value">{{currentValue}}</span>
+          </button>
+          <ul class="dropdown-list" id="categorias-2" role="listbox" aria-expanded="false"
+            [ngClass]="{'dropdown-open' : dropdownOpen}">
+            <li [routerLink]="['/home']" [ngClass]="{'selected' : currentValue === 'TODAS'}" (click)="select('TODAS')">
+              TODAS</li>
+            <li *ngFor="let category of categories" [ngClass]="{'selected' : currentValue === category}" tabindex="0"
+              (click)="select(category.name)" role="option" [innerHTML]="category.name"
+              [routerLink]="['/category', category.id]">
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!--dropdown menu-->
+
+      <div class="nav-center">
+        <input [(ngModel)]="productName" type="text" class="search">
+      </div>
+
+      <div class="nav-right">
+        <a (click)="productSearch(productName)" id="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="34" height="34"
+            viewBox="0 0 24 24" stroke-width="2" stroke="#222831" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <circle cx="10" cy="10" r="7"></circle>
+            <line x1="21" y1="21" x2="15" y2="15"></line>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div>
+      <button (click)="toogleMenu()">X</button>
+    </div>
+    <div>
+      <a (click)="redirectUser()" class="tool-button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44"
+          viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="12" cy="7" r="4" />
+          <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+        </svg>
+        <span>{{userName}}</span>
+      </a>
+    </div>
+    <div>
+      <a routerLink="my-cart" class="tool-button cart">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="44"
+          height="44" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <circle cx="6" cy="19" r="2"></circle>
+          <circle cx="17" cy="19" r="2"></circle>
+          <path d="M17 17h-11v-14h-2"></path>
+          <path d="M6 5l14 1l-1 7h-13"></path>
+        </svg>
+        <!-- <span class="counter">{{counter}}</span> -->
+      </a>
+    </div>
+  </div>
+</div>
+<div class="barra-amarilla"></div>

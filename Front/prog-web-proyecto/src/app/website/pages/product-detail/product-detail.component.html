@@ -1,0 +1,12 @@
+<div class="container">
+    <h2>{{producto.name}}</h2>
+    <p>{{producto.category_name}}</p>
+    <h3>${{producto.price}}</h3>
+    <p>{{producto.description}}</p>
+    <br>
+    <p>Stock disponible: <br> Cantidad: {{producto.stock}} unidad ({{producto.stock}} disponibles)</p>
+    <div class="button-container">
+        <button type="button" class="cart" (click)="addToCart()">Agregar al carrito</button>
+        <button type="button" class="buy-now" (click)="buy()">Comprar ahora</button>
+    </div>
+</div>

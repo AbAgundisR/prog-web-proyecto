@@ -1,0 +1,94 @@
+<div class="tittle">
+  <h1>Detalle del pedido</h1>
+</div>
+<div class="container">
+
+  <div class="pedido">
+    <div>
+      <h4>Número de orden</h4>
+      <p>{{order_number}}</p>
+      <h4>Estatus</h4>
+      <p>{{order.status}}</p>
+    </div>
+    <div>
+      <h4>Fecha</h4>
+      <p>{{fechaF}}</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h3>Productos</h3>
+
+  <table>
+    <thead class="headers">
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Subtotal</th>
+    </thead>
+
+    <tbody *ngFor="let product of carts">
+      <tr class="text">
+        <td>{{product.product.name}}</td>
+        <td>{{product.quantity}}</td>
+        <td>${{product.amount}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="row-left">
+      <h4>Total: $</h4>
+      <p>{{total}}</p>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <hr>
+
+  <h3>Datos de envío</h3>
+  <div class="datos-envio">
+    <div>
+      <p>Nombre</p>
+      <input class="input1" type="text" disabled value="{{user.full_name}}">
+    </div>
+    <div>
+      <p>Teléfono</p>
+      <input class="input1" type="text" disabled value="{{user.phone}}">
+    </div>
+  </div>
+  <div class="datos-envio">
+    <div>
+      <p>Dirección</p>
+      <input class="input2" type="text" disabled value="{{user.address_line_1}}">
+    </div>
+    <div>
+      <p>Colonia</p>
+      <input class="input2" type="text" disabled value="{{user.address_line_2}}">
+    </div>
+
+    <div>
+      <div>
+        <p>Ciudad</p>
+        <input class="input2" type="text" disabled value="{{user.address_city}}">
+      </div>
+    </div>
+  </div>
+  <div class="datos-envio">
+    <div>
+      <p>Estado</p>
+      <input class="input2" type="text" disabled value="{{user.address_state}}">
+    </div>
+    <div>
+      <p>País</p>
+      <input class="input2" type="text" disabled value="{{user.address_country}}">
+    </div>
+    <div>
+      <p>Código postal</p>
+      <input class="input2" type="text" disabled value="{{user.address_cp}}">
+    </div>
+  </div>
+
+</div>
+<div class="button-container">
+  <button type="button" class="buy-now" (click)="goPayment()">Proceder al pago</button>
+</div>

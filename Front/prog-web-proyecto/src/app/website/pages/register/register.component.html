@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="img"></div>
+  <div class="login-content">
+    <form [formGroup]="form">
+      <a href="">
+        <img src="assets/img/logo.png" />
+      </a>
+      <h2 class="title">Crear cuenta</h2>
+      <div class="input-div one">
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="div">
+          <h4>Nombre</h4>
+          <input formControlName="full_name" type="text" class="input" />
+        </div>
+      </div>
+      <div
+        class="messages"
+        [class.active]="fullnameField!.touched && fullnameField!.invalid"
+      >
+        <p>
+          <strong
+            *ngIf="
+              fullnameField!.touched && fullnameField!.hasError('required')
+            "
+            >Este campo es requerido</strong
+          >
+        </p>
+      </div>
+      <div class="input-div one">
+        <div class="i">
+          <i class="fa fa-envelope"></i>
+        </div>
+        <div class="div">
+          <h4>Correo electrónico</h4>
+          <input formControlName="email" type="email" class="input" />
+        </div>
+      </div>
+      <div
+        class="messages"
+        [class.active]="emailField!.touched && emailField!.invalid"
+      >
+        <p>
+          <strong
+            *ngIf="emailField!.touched && emailField!.hasError('required')"
+            >Este campo es requerido</strong
+          >
+        </p>
+      </div>
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div class="div">
+          <h4>Contraseña</h4>
+          <input
+            formControlName="password"
+            type="password"
+            class="input"
+            id="pass1"
+          />
+        </div>
+      </div>
+      <div
+        class="messages"
+        [class.active]="passwordField!.touched && passwordField!.invalid"
+      >
+        <p>
+          <strong
+            *ngIf="
+              passwordField!.touched && passwordField!.hasError('required')
+            "
+            >Este campo es requerido</strong
+          >
+        </p>
+      </div>
+      <!-- <div
+        class="messages"
+        [class.active]="passwordField!.touched && passwordField!.invalid"
+      >
+        <p>
+          <strong *ngIf="form.get('password')!.hasError('invalid_password')"
+            >Debe tener al menos un número</strong
+          >
+        </p>
+      </div> -->
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div class="div">
+          <h4>Confirmación de contraseña</h4>
+          <input
+            formControlName="confirmPassword"
+            type="password"
+            class="input"
+            id="pass2"
+          />
+        </div>
+      </div>
+      <div
+        class="messages"
+        [class.active]="
+          confirmPasswordField!.touched && confirmPasswordField!.invalid
+        "
+      >
+        <p>
+          <strong
+            *ngIf="
+              confirmPasswordField!.touched &&
+              confirmPasswordField!.hasError('required')
+            "
+            >Este campo es requerido</strong
+          >
+        </p>
+      </div>
+      <!-- <div
+        class="messages"
+        [class.active]="passwordField!.touched && passwordField!.invalid"
+      >
+        <p>
+          <strong *ngIf="form.get('password')!.hasError('invalid_password')"
+            >Debe tener al menos un número</strong
+          >
+        </p>
+      </div> -->
+      <div class="messages" [class.active]="confirmPasswordField!.touched">
+        <p>
+          <strong *ngIf="form.hasError('match_password')"
+            >Las contraseñas no coinciden</strong
+          >
+        </p>
+      </div>
+      <input
+        [disabled]="form.invalid"
+        type="submit"
+        id="btn-register"
+        class="btn-register"
+        value="Crear cuenta"
+        (click)="registerUser()"
+      />
+    </form>
+  </div>
+</div>

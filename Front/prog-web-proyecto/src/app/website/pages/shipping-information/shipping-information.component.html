@@ -1,0 +1,94 @@
+<!-- Formulario del usuario  -->
+<body>
+  <main>
+    <form [formGroup]="form" class="form">
+      <div id="Encabezado">
+        <h1>Datos de envío</h1>
+        <br />
+      </div>
+
+      <div class="form_container">
+        <input formControlName="phone" type="number" class="form_input" placeholder="TELEFONO" name="phone"/>
+        <div class="messages" [class.active]="phoneFiel!.touched && phoneFiel!.invalid">
+          <p>
+            <strong *ngIf="phoneFiel!.touched && phoneFiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="address_line_1" type="text" class="form_input" placeholder="DIRECCION" name="address_line_1"/>
+        <div class="messages" [class.active]="addressLine1Fiel!.touched && addressLine1Fiel!.invalid">
+          <p>
+            <strong *ngIf="addressLine1Fiel!.touched && addressLine1Fiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="address_line_2" type="text" class="form_input" placeholder="COLONIA" name="address_line_2"/>
+        <div class="messages" [class.active]="addressLine2Fiel!.touched && addressLine2Fiel!.invalid">
+          <p>
+            <strong *ngIf="addressLine2Fiel!.touched && addressLine2Fiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="address_cp" type="number" class="form_input" placeholder="CÓDIGO POSTAL" name="address_cp"/>
+        <div class="messages" [class.active]="cpFiel!.touched && cpFiel!.invalid">
+          <p>
+            <strong *ngIf="cpFiel!.touched && cpFiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="address_city" type="text" class="form_input" placeholder="CIUDAD" name="address_city"/>
+        <div class="messages" [class.active]="addressCityFiel!.touched && addressCityFiel!.invalid">
+          <p>
+            <strong *ngIf="addressCityFiel!.touched && addressCityFiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="address_state" type="text" class="form_input" placeholder="ESTADO" name="address_state"/>
+        <div class="messages" [class.active]="addressStatepFiel!.touched && addressStatepFiel!.invalid">
+          <p>
+            <strong *ngIf="addressStatepFiel!.touched && addressStatepFiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <input formControlName="address_country" type="text" class="form_input" placeholder="PAÍS" name="address_country"/>
+        <div class="messages" [class.active]="addressCountryFiel!.touched && addressCountryFiel!.invalid">
+          <p>
+            <strong *ngIf="addressCountryFiel!.touched && addressCountryFiel!.hasError('required')">
+              Este campo es requerido
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <button (click)="save()" type="submit" class="form_cta">
+          <span>Guardar</span>
+        </button>
+      </div>
+    </form>
+  </main>
+</body>

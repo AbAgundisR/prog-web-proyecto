@@ -1,0 +1,190 @@
+<!-- Formulario del usuario
+<body>
+  <div class="contenedor">
+  <section>
+    <form [formGroup]="form" class="form">
+      <div id="Encabezado">
+        <h1>Información del pedido</h1>
+        <br>
+      </div>
+
+      <label>NÚMERO DE ORDEN</label>
+      <div class="form_container">
+        <input formControlName="order_number" type="text" class="form_input" placeholder="NÚMERO DE ORDEN" />
+      </div>
+
+      <label>PRODUCTO</label>
+      <div class="form_container">
+        <input formControlName="product_id" type="text" class="form_input" placeholder="PRODUCTO"/>
+      </div>
+
+      <label>CANTIDAD</label>
+      <div class="form_container">
+        <input formControlName="quantity" type="text" class="form_input" placeholder="CANTIDAD"/>
+      </div>
+
+      <label>TOTAL</label>
+      <div class="form_container">
+        <input formControlName="total_price" type="text" class="form_input" placeholder="TOTAL"/>
+      </div>
+
+      <label>ESTATUS</label>
+      <div class="form_container">
+        <select formControlName="status" class="form_input">
+          <option [value]="false">En proceso</option>
+          <option [value]="true">Completado</option>
+        </select>
+      </div>
+
+    </form>
+  </section>
+
+  <section>
+    <form [formGroup]="form2" class="form">
+      <div id="Encabezado">
+        <h1>Datos de envío</h1>
+        <br />
+      </div>
+
+      <label>NOMBRE</label>
+      <div class="form_container">
+        <input formControlName="full_name" type="text" class="form_input" placeholder="NOMBRE" name="full_name"/>
+      </div>
+
+      <label>TELÉFONO</label>
+      <div class="form_container">
+        <input formControlName="phone" type="number" class="form_input" placeholder="TELEFONO" name="phone"/>
+      </div>
+
+      <label>DIRECCIÓN</label>
+      <div class="form_container">
+        <input formControlName="address_line_1" type="text" class="form_input" placeholder="DIRECCION" name="address_line_1"/>
+      </div>
+
+      <label>COLONIA</label>
+      <div class="form_container">
+        <input formControlName="address_line_2" type="text" class="form_input" placeholder="COLONIA" name="address_line_2"/>
+      </div>
+
+      <label>CÓDIGO POSTAL</label>
+      <div class="form_container">
+        <input formControlName="address_cp" type="number" class="form_input" placeholder="CÓDIGO POSTAL" name="address_cp"/>
+      </div>
+
+      <label>CIUDAD</label>
+      <div class="form_container">
+        <input formControlName="address_city" type="text" class="form_input" placeholder="CIUDAD" name="address_city"/>
+      </div>
+
+      <label>ESTADO</label>
+      <div class="form_container">
+        <input formControlName="address_state" type="text" class="form_input" placeholder="ESTADO" name="address_state"/>
+      </div>
+
+      <label>PAÍS</label>
+      <div class="form_container">
+        <input formControlName="address_country" type="text" class="form_input" placeholder="PAÍS" name="address_country"/>
+      </div>
+    </form>
+  </section>
+</div>
+<br>
+<div class="form_container">
+  <button (click)="save()" type="submit" class="form_cta">
+    <span>Guardar</span>
+  </button>
+</div>
+</body> -->
+
+<!-- <div class="tittle">
+  <h1>Detalle del pedido</h1>
+</div> -->
+<div class="container">
+
+    <div class="pedido">
+    <div>
+      <h4>Número de orden</h4>
+      <p>{{order_number}}</p>
+    </div>
+    <div>
+      <h4>Fecha</h4>
+      <p>{{3}}</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h3>Productos</h3>
+
+  <table>
+    <thead class="headers">
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Subtotal</th>
+    </thead>
+
+    <!-- <tbody *ngFor="let product of carts">
+      <tr class="text">
+        <td>{{product.product.name}}</td>
+        <td>{{product.quantity}}</td>
+        <td>${{product.amount}}</td>
+      </tr>
+    </tbody> -->
+  </table>
+  <div class="row">
+    <div class="row-left">
+      <h4>Total: $</h4>
+      <p>{{9}}</p>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <hr>
+
+  <h3>Datos de envío</h3>
+  <div class="datos-envio">
+    <div>
+      <p>Nombre</p>
+      <input class="input1" type="text" disabled value="{{user.full_name}}">
+    </div>
+    <div>
+      <p>Teléfono</p>
+      <input class="input1" type="text" disabled value="{{user.phone}}">
+    </div>
+  </div>
+  <div class="datos-envio">
+    <div>
+      <p>Dirección</p>
+      <input class="input2" type="text" disabled value="{{user.address_line_1}}">
+    </div>
+    <div>
+      <p>Colonia</p>
+      <input class="input2" type="text" disabled value="{{user.address_line_2}}">
+    </div>
+
+    <div>
+      <div>
+        <p>Ciudad</p>
+        <input class="input2" type="text" disabled value="{{user.address_city}}">
+      </div>
+    </div>
+  </div>
+  <div class="datos-envio">
+    <div>
+      <p>Estado</p>
+      <input class="input2" type="text" disabled value="{{user.address_state}}">
+    </div>
+    <div>
+      <p>País</p>
+      <input class="input2" type="text" disabled value="{{user.address_country}}">
+    </div>
+    <div>
+      <p>Código postal</p>
+      <input class="input2" type="text" disabled value="{{user.address_cp}}">
+    </div>
+  </div>
+
+</div>
+<div class="button-container">
+  <!-- <button type="button" class="buy-now" (click)="backHome()">Regresar al inicio</button> -->
+</div>

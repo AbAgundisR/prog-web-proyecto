@@ -1,0 +1,92 @@
+<div class="ocultar-telfono">
+  <table>
+    <thead class="headers">
+      <th>Id de la orden</th>
+      <th>Id del usuario</th>
+      <th>Total</th>
+      <!-- <th>Acciones</th> -->
+    </thead>
+
+    <tbody *ngFor="let order of orders">
+        <tr>
+          <td>{{order.id}}</td>
+          <td>{{order.user_id}}</td>
+          <td>{{order.total}}</td>
+          <td>
+            <!-- <a [routerLink]="['edit', order.id]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#222831" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                <line x1="16" y1="5" x2="19" y2="8" />
+              </svg>
+            </a> -->
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--Diseño para tablet-->
+<div class="ocultar-tablet">
+  <table>
+    <thead class="headers">
+      <th>Id de la orden</th>
+      <th>Id del usuario</th>
+      <th>Total</th>
+      <th>Estatus</th>
+      <!-- <th>Acciones</th> -->
+    </thead>
+
+    <tbody *ngFor="let order of orders">
+        <tr>
+          <td>{{order.id}}</td>
+          <td>{{order.user_id}}</td>
+          <td>{{order.total}}</td>
+          <td>{{order.status}}</td>
+          <td>
+            <!-- <a [routerLink]="['edit', order.id]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#222831" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                <line x1="16" y1="5" x2="19" y2="8" />
+              </svg>
+            </a> -->
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--Diseño para computadoras-->
+<div class="ocultar-desktop">
+  <table>
+    <thead class="headers">
+      <th>Id de la orden</th>
+      <th>Id del usuario</th>
+      <th>Total</th>
+      <th>Estatus</th>
+      <!-- <th>Acciones</th> -->
+    </thead>
+
+    <tbody  *ngFor="let order of orders">
+        <tr>
+          <td>{{order.id}}</td>
+          <td>{{order.user_id}}</td>
+          <td>{{order.total}}</td>
+          <td>{{order.status}}</td>
+          <td>
+            <!-- <a [routerLink]="['edit', order.id]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#222831" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                <line x1="16" y1="5" x2="19" y2="8" />
+              </svg>
+            </a> -->
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>

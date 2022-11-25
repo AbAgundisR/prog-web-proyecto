@@ -1,0 +1,32 @@
+.card {
+    text-align: center;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.card-price,
+.card-title {
+    font-weight: bold;
+}
+
+a.btn {
+    background-color: #FCDA05;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+    border-radius: 25px;
+    width: 50%;
+    height: 35px;
+}
+
+
+a.btn:hover {
+    background-color: #000;
+    color: white;
+}
+
+.not-products{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}

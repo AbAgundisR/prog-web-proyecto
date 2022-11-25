@@ -1,0 +1,282 @@
+header {
+  height: 50px;
+  background-color: #222831;
+  color: white;
+  padding: 1em;
+}
+
+// .cart {
+//   position: relative;
+
+//   .counter {
+//     width: 20px;
+//     height: 20px;
+//     line-height: 20px;
+//     background: white;
+//     border-radius: 50%;
+//     display: block;
+//     color: black;
+//     text-align: center;
+//     position: absolute;
+//     top: -3px;
+//     right: 10px;
+//   }
+// }
+
+a,
+a:link,
+a:visited {
+  box-shadow: none;
+  text-decoration: none;
+  color: white;
+}
+
+a:hover{
+  color: #FCDA05;
+}
+
+.barra-amarilla {
+  height: 10px;
+  background-color: #FCDA05;
+}
+
+.nav {
+  height: 100px;
+  width: 100%;
+  background-color: #222831;
+  margin: auto;
+  display: flex;
+}
+
+.nav-left {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  margin-right: 10px;
+}
+
+.nav-center {
+  display: flex;
+  vertical-align: middle;
+  height: 100%;
+  width: auto;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+.nav-right {
+  display: flex;
+  vertical-align: middle;
+  height: 100%;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.logo-mini {
+  height: 100%;
+}
+
+.tool-button {
+  text-align: center;
+  line-height: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+
+}
+
+.search {
+  width: 100%;
+  height: 34px;
+  padding-left: 5px;
+}
+
+.nav-search {
+  display: flex;
+  width: auto;
+}
+
+#submit {
+  background-color: white;
+}
+
+#logo-link {
+  height: 100%;
+}
+
+.menu-button {
+  display: none;
+  background-color: #222831;
+  border: 0;
+}
+
+.menu-button-2 {
+  display: none;
+  background-color: #222831;
+}
+
+.menu-button-2 svg {
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 840px) {
+  .menu-responsivo {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .menu-responsivo {
+    display: none;
+  }
+
+  .menu-responsivo.active {
+    position: absolute;
+    display: block;
+    z-index: 1;
+    right: 0;
+    top: 100px;
+    background-color: #222831;
+    height: auto;
+  }
+
+  .responsive-hide {
+    display: none;
+  }
+
+  .responsive-resize {
+    width: auto !important;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .responsive-hide-2 {
+    display: none;
+  }
+
+  .menu-button-2 {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 210px) {
+  .logo-mini {
+    width: 40%;
+    height: auto;
+  }
+}
+
+.topbar {
+  height: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: -100px;
+  left: 0;
+  background-color: #222831;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.topbar.active {
+  height: 150px;
+  top: 0px;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #222831;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+.sidebar.active {
+  width: 150px;
+}
+
+//-------------------------- dropdown menu -------------------------------------------------
+$accent-color: #FCDA05;
+$text-color: #444;
+$width: 250px;
+$font-size: 0.85em;
+$background-color: white;
+$border-color: #ddd;
+
+.dropdown-collection {
+  width: $width;
+  position: relative;
+}
+
+.dropdown-button {
+  height: 34px;
+  border: none;
+  border-top: 1px solid $border-color;
+  position: relative;
+  justify-content: space-between;
+  padding: 12px 32px 12px 12px;
+  background-color: $background-color;
+  display: flex;
+  font-size: $font-size;
+  width: 100%;
+  cursor: pointer;
+  align-items: center;
+  background-image: url("/assets/svg/chevron.svg");
+  background-size: 10px;
+  background-position: right 16px bottom 45%;
+  background-repeat: no-repeat;
+
+  &:hover {
+    outline: 1px solid fade_out($accent-color, 0.5);
+  }
+}
+
+.dropdown-value {
+  font-weight: 600;
+}
+
+.dropdown-list {
+  display: none;
+  background: $background-color;
+  list-style: none;
+  border: 1px solid $accent-color;
+  box-shadow: 0px 0px 15px -1px fade_out($accent-color, 0.6);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  z-index: 10;
+  right: 0;
+  margin: 0;
+  transform: translateY(100%);
+
+  li {
+    padding: 4px 16px;
+    cursor: pointer;
+    font-weight: 700;
+
+    &.selected {
+      background: darken($background-color, 5%);
+    }
+
+    &:hover {
+      background: fade_out($accent-color, 0.6);
+    }
+  }
+
+  &.dropdown-open {
+    display: block;
+  }
+}
+
+#categorias-2 {
+  max-height: 75px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
