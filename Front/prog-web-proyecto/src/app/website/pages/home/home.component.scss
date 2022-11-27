@@ -8,6 +8,14 @@
     font-weight: bold;
 }
 
+.card-img-content {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 200px;
+}
+
 a.btn {
     background-color: #FCDA05;
     text-align: center;
@@ -25,8 +33,25 @@ a.btn:hover {
     color: white;
 }
 
-.not-products{
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
+.not-products {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+a:link,
+a:visited {
+    background-color: #FCDA05;
+    color: black;
+    border: 2px solid #222831;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover,
+a:active {
+    background-color: #FCDA05;
+    color: black;
 }

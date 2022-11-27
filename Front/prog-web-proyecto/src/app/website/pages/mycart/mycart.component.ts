@@ -4,7 +4,7 @@ import { UsersService } from '../../../services/users.service';
 import { User } from 'src/app/models/user.model';
 import { CartsService } from 'src/app/services/carts.service';
 import { Cart } from 'src/app/models/cart.model';
-import {ProductsService} from 'src/app/services/products.service';
+import { ProductsService } from 'src/app/services/products.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,23 +13,43 @@ import { Router } from '@angular/router';
   styleUrls: ['./mycart.component.scss']
 })
 export class MycartComponent implements OnInit {
-
   user!: User;
   user_id!: number;
-  products: Cart[] = [];
-  total : number = 0;
-  quantity : number = 0;
+  products: Cart[] = [
+    {
+      id: 1,
+      user_id: 1,
+      product_id: 1,
+      quantity: 1,
+      amount: 100,
+      product_stock: 1,
+      active: true,
+      product: {
+        id: 1,
+        code: "aaa",
+        name: "aaa",
+        price: 100,
+        category_id: 100,
+        category_name: "string",
+        description: "string",
+        stock: 0
+      }
+    }
+  ];
+  total: number = 0;
+  quantity: number = 0;
   stock: number = 0;
 
   constructor(
     private usersService: UsersService,
-    private cartsService:CartsService,
-    private productService:ProductsService,
-    private router:Router
-  ) {}
+    private cartsService: CartsService,
+    private productService: ProductsService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.getUser()
+    // this.getUser()
+    this.totalBuy()
   }
 
   getUser() {
@@ -41,62 +61,62 @@ export class MycartComponent implements OnInit {
       })
   }
 
-  getCartUser(){
+  getCartUser() {
     this.cartsService.getUserCart(this.user_id)
-    .subscribe(data => {
-      this.products = data.data
-      console.log(data.data)
-      // this.getProduct()
-      this.totalBuy()
-    })
+      .subscribe(data => {
+        this.products = data.data
+        console.log(data.data)
+        // this.getProduct()
+        this.totalBuy()
+      })
   }
 
-  totalBuy(){
+  totalBuy() {
     this.products.forEach(product => {
-      if(product.active == true){
+      if (product.active == true) {
         this.total = this.total + product.amount
       }
     });
   }
 
-  updateQuantityProductsPlus(cart_id: number, product: any){
+  updateQuantityProductsPlus(cart_id: number, product: any) {
     this.quantity = product.quantity
     product.quantity = this.quantity + 1
     this.cartsService.updateQuantityProductOnCart(cart_id, product)
-    .subscribe(data => {
-      product.amount = data.data.amount
-      this.total = 0
-      this.totalBuy()
-    });
-  }
-
-  updateQuantityProductsMinus(cart_id: number, product: any){
-    this.quantity = product.quantity
-    product.quantity = this.quantity - 1
-    console.log(this.quantity)
-    if (product.quantity == 0){
-      this.deleteProduct(product.id)
-    }
-    else {
-      this.cartsService.updateQuantityProductOnCart(cart_id, product)
       .subscribe(data => {
         product.amount = data.data.amount
         this.total = 0
         this.totalBuy()
       });
+  }
+
+  updateQuantityProductsMinus(cart_id: number, product: any) {
+    this.quantity = product.quantity
+    product.quantity = this.quantity - 1
+    console.log(this.quantity)
+    if (product.quantity == 0) {
+      this.deleteProduct(product.id)
+    }
+    else {
+      this.cartsService.updateQuantityProductOnCart(cart_id, product)
+        .subscribe(data => {
+          product.amount = data.data.amount
+          this.total = 0
+          this.totalBuy()
+        });
     }
   }
 
-  deleteProduct(product_id: number){
+  deleteProduct(product_id: number) {
     this.cartsService.deleteProductOnCart(product_id)
-    .subscribe(() => {
-      this.total = 0
-      this.getCartUser()
-    })
+      .subscribe(() => {
+        this.total = 0
+        this.getCartUser()
+      })
   }
 
-  buy(){
-    this.router.navigate(['/shipping-information']);
+  buy() {
+    this.router.navigate(['/buy-detail']);
   }
 
   // getProduct(){

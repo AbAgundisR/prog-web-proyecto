@@ -4,7 +4,7 @@ import { Product } from 'src/app/models/product.model';
 import { Cart } from 'src/app/models/cart.model';
 import { ProductsService } from '../../../services/products.service';
 import { Router } from '@angular/router';
-import {CartsService} from '../../../services/carts.service'
+import { CartsService } from '../../../services/carts.service'
 import { UsersService } from '../../../services/users.service';
 import { User } from 'src/app/models/user.model';
 
@@ -14,7 +14,19 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  producto!: Product;
+  creador: boolean = false;
+  src: any;
+
+  producto: Product = {
+    id: 1,
+    code: "aaa",
+    name: "aaa",
+    price: 100,
+    category_id: 100,
+    category_name: "string",
+    description: "string",
+    stock: 0
+  };
   productId!: number;
   user!: User;
   cart: Cart = {
@@ -39,19 +51,22 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productsService: ProductsService,
-    private cartService:CartsService,
+    private cartService: CartsService,
     private usersService: UsersService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    this.getUser()
-    this.route.params.subscribe((params: Params) => {
-      this.productId = params['id'];
-      if (this.productId) {
-        this.getProduct();
-      }
-    });
+    // this.getUser()
+    // this.route.params.subscribe((params: Params) => {
+    //   this.productId = params['id'];
+    //   if (this.productId) {
+    //     this.getProduct();
+    //   }
+    // });
+    if (this.route.snapshot.queryParams['crear']) {
+      this.creador = true;
+    }
   }
 
   private getProduct() {
@@ -71,15 +86,30 @@ export class ProductDetailComponent implements OnInit {
       })
   }
 
-  addToCart(){
+  addToCart() {
     // console.log(JSON.stringify(this.cart));
     this.cartService.addToCart(this.cart)
-    .subscribe(() => {})
+      .subscribe(() => { })
   }
 
-  buy(){
+  buy() {
     this.cartService.addToCart(this.cart)
-    .subscribe(() => {})
+      .subscribe(() => { })
     this.router.navigate(['/shipping-information']);
+  }
+
+  procesarImagen(imagen: any) {
+    var mimeType = imagen.target.files[0].type;
+
+    if (mimeType.match(/image\/*/) == null) {
+      imagen.srcElement.value = "";
+      return;
+    }
+    var reader = new FileReader();
+    reader.readAsDataURL(imagen.target.files[0]);
+
+    reader.onload = (_event) => {
+      this.src = reader.result;
+    }
   }
 }

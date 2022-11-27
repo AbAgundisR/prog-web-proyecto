@@ -9,4 +9,6 @@ export interface Product {
   stock: number;
   created_at?: Date;
   updated_at?: Date;
+  imagen?: String;
+  blanco_negro?: boolean;
 }

@@ -1,6 +1,7 @@
 <div class="tittle">
-  <h1>Pago del pedido</h1>
-  <p *ngIf="order.status == 'PAGADO.'">Su pedido llegará en 3 días</p>
+  <h1>Resumen del pedido</h1>
+  <h3>¡Gracias por su compra! Le notificaremos por correo electrónico el estatus de su pedido.</h3>
+  <!-- <p *ngIf="order.status == 'PAGADO.'">Su pedido llegará en 3 días</p> -->
 </div>
 <div class="container">
 
@@ -48,4 +49,3 @@
 <div *ngIf="order.status == 'PAGADO.'" class="button-container">
   <button type="button" class="buy-now" (click)="backHome()">Ir al inicio</button>
 </div>
-

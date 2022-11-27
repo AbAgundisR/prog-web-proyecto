@@ -76,7 +76,7 @@ export class BuyDetailComponent implements OnInit {
       .subscribe(data => {
         this.carts = data.data
         this.carts.forEach(cart => {
-          if (cart.active == true){
+          if (cart.active == true) {
             this.products.push(cart)
           }
         })
@@ -92,29 +92,29 @@ export class BuyDetailComponent implements OnInit {
   }
 
   createOrder() {
-    console.log("Crear orden")
-    var order_number: number = Math.round(Math.sqrt(Date.now()))
-    this.order.order_number = order_number
-    this.order.user_id = this.user.id
+    // console.log("Crear orden")
+    // var order_number: number = Math.round(Math.sqrt(Date.now()))
+    // this.order.order_number = order_number
+    // this.order.user_id = this.user.id
 
-    this.products.forEach(cart => {
-      this.order.cart_id = cart.id
-      this.product = cart.product
-      this.stock = this.product.stock - cart.quantity
-      this.product.stock = this.stock
-      console.log(this.product.stock)
-      console.log(this.product)
+    // this.products.forEach(cart => {
+    //   this.order.cart_id = cart.id
+    //   this.product = cart.product
+    //   this.stock = this.product.stock - cart.quantity
+    //   this.product.stock = this.stock
+    //   console.log(this.product.stock)
+    //   console.log(this.product)
 
-      this.productsService.updateProduct(this.product.id, this.product)
-      .subscribe(data => {})
+    //   this.productsService.updateProduct(this.product.id, this.product)
+    //   .subscribe(data => {})
 
-      this.ordersService.createOrder(this.order)
-      .subscribe(() => {
-        console.log("se ha creado la orden")
-       })
-    });
+    //   this.ordersService.createOrder(this.order)
+    //   .subscribe(() => {
+    //     console.log("se ha creado la orden")
+    //    })
+    // });
 
-    this.router.navigate(['/order-detail', order_number]);
+    this.router.navigate(['/order-detail', 1]);
 
   }
 }

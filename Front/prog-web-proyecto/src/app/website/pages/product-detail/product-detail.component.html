@@ -1,4 +1,20 @@
 <div class="container">
+    <div style=" text-align: center;">
+        <img src="assets/img/camisetaBlanca.png" class="card-img-shirt">
+        <img [src]="src" alt="" class="card-img-content">
+        <!-- src="assets/img/rey_recesvinto.png" -->
+    </div>
+    <div style="text-align: center;">
+        <p>Talla</p>
+        <input type="radio" name="talla"> XL
+        <input type="radio" name="talla"> L
+        <input type="radio" name="talla"> M
+        <input type="radio" name="talla"> S
+    </div>
+    <br>
+    <div style="text-align: center;" *ngIf="creador">
+        <input type="file" accept="image/*" (change)="procesarImagen($event)">
+    </div>
     <h2>{{producto.name}}</h2>
     <p>{{producto.category_name}}</p>
     <h3>${{producto.price}}</h3>
