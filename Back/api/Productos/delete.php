@@ -5,46 +5,42 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-  
-if($_SERVER["REQUEST_METHOD"] != "POST"){
-    echo 'not post';
+
+if ($_SERVER["REQUEST_METHOD"] != "DELETE") {
+    echo 'not delete';
 }
 
-include_once '../config/config.php';
-include_once '../model/Materia.php';
-  
+include_once '../_Config/config.php';
+include_once '../_Model/Producto.php';
+
 // instantiate database and product object
 $database = new Database();
 $db = $database->getConnection();
 
-$materia = new Materia();
+$ID = 0;
 
 $data = json_decode(file_get_contents("php://input"));
 
-if(!empty($data->id) && !empty($data->nombre) && !empty($data->semestre)){
+if (!empty($data->ID)) {
     // set product property values
-    $materia->id = $data->id;
-    $materia->nombre = $data->nombre;
-    $materia->semestre = $data->semestre;
+    $ID = $data->ID;
 }
 
 // Prepare a select statement
-$sql = "INSERT INTO Reticula (id, nombre, semestre) VALUES (?, ?, ?)";
+$sql = "DELETE FROM Productos WHERE ID = ?";
 
-if($stmt = mysqli_prepare($db, $sql)){
+if ($stmt = mysqli_prepare($db, $sql)) {
     // Bind variables to the prepared statement as parameters
-    mysqli_stmt_bind_param($stmt, "sss", $param_id, $param_nombre, $param_semestre);
-    
+    mysqli_stmt_bind_param($stmt, "i", $param_ID);
+
     // Set parameters
-    $param_id = $materia->id;
-    $param_nombre = $materia->nombre;
-    $param_semestre = $materia->semestre;
-    
+    $param_ID = $ID;
+
     // Attempt to execute the prepared statement
-    if(mysqli_stmt_execute($stmt)){
+    if (mysqli_stmt_execute($stmt)) {
         // tell the user
-        echo json_encode(array("message" => "Materia creada."));
-    } else{
+        echo json_encode(array("message" => "Producto borrado."));
+    } else {
         echo "Oops! Something went wrong. Please try again later.";
     }
 
@@ -54,4 +50,3 @@ if($stmt = mysqli_prepare($db, $sql)){
 
 // Close connection
 mysqli_close($db);
-?>
