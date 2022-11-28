@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "prog-web-proyecto": {
+      "hosting": {
+        "ducky-shop": [
+          "prog-web-proyecto"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "prog-web-proyecto"
+  }
+}
