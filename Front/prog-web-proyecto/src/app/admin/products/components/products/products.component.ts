@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../../../models/product.model';
-import { ProductsService } from '../../../../services/products.service';
+import { Producto } from '../../../../models/producto.model';
+import { ProductosService } from '../../../../services/productos.service';
 
 @Component({
   selector: 'app-products',
@@ -9,9 +9,9 @@ import { ProductsService } from '../../../../services/products.service';
 })
 export class ProductsComponent implements OnInit {
 
-  public products: Product[] = [];
+  public products: Producto[] = [];
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductosService) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -26,8 +26,8 @@ export class ProductsComponent implements OnInit {
 
   deleteProduct(id: number) {
     this.productsService.deleteProduct(id)
-    .subscribe(() => {
-      this.getProducts();
-    });
+      .subscribe(() => {
+        this.getProducts();
+      });
   }
 }

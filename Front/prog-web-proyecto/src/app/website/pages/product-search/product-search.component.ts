@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Product } from 'src/app/models/product.model';
-import { ProductsService } from '../../../services/products.service';
+import { Producto } from 'src/app/models/producto.model';
+import { ProductosService } from '../../../services/productos.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ProductSearchComponent implements OnInit {
 
-  products: Array<Product> = [];
+  products: Array<Producto> = [];
   product: any = {
     search: ""
   };
@@ -19,9 +19,9 @@ export class ProductSearchComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService,
+    private productsService: ProductosService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -42,7 +42,7 @@ export class ProductSearchComponent implements OnInit {
       });
   }
 
-  goProductDetail(id: number){
+  goProductDetail(id: number) {
     this.router.navigate(['/product', id]);
   }
 }

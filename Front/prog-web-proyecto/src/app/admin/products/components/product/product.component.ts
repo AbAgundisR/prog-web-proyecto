@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProductsService } from '../../../../services/products.service';
+import { ProductosService } from '../../../../services/productos.service';
 import { Category } from './../../../../models/category.model';
 import { CategoriesService } from './../../../../services/categories.service';
 
@@ -18,7 +18,7 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private productsService: ProductsService,
+    private productsService: ProductosService,
     private categoriesService: CategoriesService,
     private router: Router,
     private route: ActivatedRoute

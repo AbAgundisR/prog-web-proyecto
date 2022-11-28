@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Product } from 'src/app/models/product.model';
-import { Cart } from 'src/app/models/cart.model';
-import { ProductsService } from '../../../services/products.service';
+import { Producto } from 'src/app/models/producto.model';
+import { Carrito } from 'src/app/models/carrito.model';
+import { ProductosService } from '../../../services/productos.service';
 import { Router } from '@angular/router';
-import { CartsService } from '../../../services/carts.service'
+import { CarritosService } from '../../../services/carritos.service'
 import { UsersService } from '../../../services/users.service';
 import { User } from 'src/app/models/user.model';
 
@@ -17,7 +17,7 @@ export class ProductDetailComponent implements OnInit {
   creador: boolean = false;
   src: any;
 
-  producto: Product = {
+  producto: Producto = {
     id: 1,
     code: "aaa",
     name: "aaa",
@@ -29,7 +29,7 @@ export class ProductDetailComponent implements OnInit {
   };
   productId!: number;
   user!: User;
-  cart: Cart = {
+  cart: Carrito = {
     id: 1,
     product_id: 0,
     user_id: 0,
@@ -50,8 +50,8 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService,
-    private cartService: CartsService,
+    private productsService: ProductosService,
+    private cartService: CarritosService,
     private usersService: UsersService,
     private router: Router
   ) { }

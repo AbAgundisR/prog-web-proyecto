@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { Product } from 'src/app/models/product.model';
-import { ProductsService } from '../../../services/products.service';
+import { Producto } from 'src/app/models/producto.model';
+import { ProductosService } from '../../../services/productos.service';
 
 @Component({
   selector: 'app-category',
@@ -12,18 +12,18 @@ import { ProductsService } from '../../../services/products.service';
 })
 export class CategoryComponent implements OnInit {
 
-  categoryId! : number;
-  products: Array<Product> = [];
+  categoryId!: number;
+  products: Array<Producto> = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private productsService: ProductsService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private productsService: ProductosService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.categoryId = params['id'];
       this.productsService.getAllProductsByCategory(this.categoryId)
-    .subscribe((data) => {
-      this.products = data.data;
-    });
+        .subscribe((data) => {
+          this.products = data.data;
+        });
     });
   }
 

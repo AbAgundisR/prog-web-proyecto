@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product.model';
+import { Producto } from 'src/app/models/producto.model';
 import { UsersService } from '../../../services/users.service';
 import { User } from 'src/app/models/user.model';
-import { CartsService } from 'src/app/services/carts.service';
-import { Cart } from 'src/app/models/cart.model';
-import { ProductsService } from 'src/app/services/products.service';
+import { CarritosService } from 'src/app/services/carritos.service';
+import { Carrito } from 'src/app/models/carrito.model';
+import { ProductosService } from 'src/app/services/productos.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class MycartComponent implements OnInit {
   user!: User;
   user_id!: number;
-  products: Cart[] = [
+  products: Carrito[] = [
     {
       id: 1,
       user_id: 1,
@@ -42,8 +42,8 @@ export class MycartComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private cartsService: CartsService,
-    private productService: ProductsService,
+    private cartsService: CarritosService,
+    private productService: ProductosService,
     private router: Router
   ) { }
 

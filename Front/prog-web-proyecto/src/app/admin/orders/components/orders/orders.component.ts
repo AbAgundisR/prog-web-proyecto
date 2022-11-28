@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from '../../../../models/order.model';
-import { OrdersService } from '../../../../services/orders.service';
+import { Pedido } from '../../../../models/pedido.model';
+import { PedidosService } from '../../../../services/pedidos.service';
 import { OrderAdmin } from 'src/app/models/order-admin.model';
 
 @Component({
@@ -13,7 +13,7 @@ export class OrdersComponent implements OnInit {
   public orders: OrderAdmin[] = [];
   id: number = 0
 
-  constructor(private ordersService: OrdersService) { }
+  constructor(private ordersService: PedidosService) { }
 
   ngOnInit(): void {
     this.getOrders();

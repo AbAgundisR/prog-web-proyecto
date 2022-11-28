@@ -3,8 +3,8 @@ import { Card } from 'src/app/models/card.model';
 import { CardsService } from 'src/app/services/cards.service';
 import { User } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
-import { Order } from 'src/app/models/order.model';
-import { OrdersService } from 'src/app/services/orders.service';
+import { Pedido } from 'src/app/models/pedido.model';
+import { PedidosService } from 'src/app/services/pedidos.service';
 import { Payment } from 'src/app/models/payment.model';
 import { PaymentService } from 'src/app/services/payment.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
@@ -20,7 +20,7 @@ export class PaymentComponent implements OnInit {
   user_id!: number;
   cards: Card[] = [];
   order_number!: number;
-  order!: Order
+  order!: Pedido
   fecha = new Date();
   fechaF!: string;
   payment: Payment = {
@@ -32,7 +32,7 @@ export class PaymentComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private cardsService: CardsService,
-    private ordersService: OrdersService,
+    private ordersService: PedidosService,
     private paymentsService: PaymentService,
     private router: Router,
     private route: ActivatedRoute,
@@ -75,15 +75,15 @@ export class PaymentComponent implements OnInit {
       })
   }
 
-  pay(){
+  pay() {
     console.log(this.payment)
     this.paymentsService.createPayment(this.payment)
-    .subscribe(data => {
-      this.router.navigate(['/payment', this.order_number]);
-    })
+      .subscribe(data => {
+        this.router.navigate(['/payment', this.order_number]);
+      })
   }
 
-  backHome(){
+  backHome() {
     this.router.navigate(['/home'])
   }
 

@@ -1,6 +1,6 @@
-import { Product } from "./product.model";
+import { Producto } from "./producto.model";
 
-export interface Cart {
+export interface Carrito {
   id: number;
   user_id: number;
   product_id: number;
@@ -11,6 +11,6 @@ export interface Cart {
   product_name?: string;
   product_price?: number;
   product_stock: number;
-  product: Product
+  product: Producto
   active: boolean
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product.model';
-import { ProductsService } from '../../../services/products.service';
+import { Producto } from 'src/app/models/producto.model';
+import { ProductosService } from '../../../services/productos.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  products: Array<Product> = [
+  products: Array<Producto> = [
     {
       id: 1,
       code: "aaa",
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor(private productsService: ProductsService, private router: Router) { }
+  constructor(private productsService: ProductosService, private router: Router) { }
 
   ngOnInit(): void {
     // this.productsService.getAllProducts()
