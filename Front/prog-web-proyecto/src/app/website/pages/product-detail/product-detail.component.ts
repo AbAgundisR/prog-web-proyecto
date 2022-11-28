@@ -18,14 +18,15 @@ export class ProductDetailComponent implements OnInit {
   src: any;
 
   producto: Producto = {
-    id: 1,
+    ID: 1,
     code: "aaa",
-    name: "aaa",
-    price: 100,
+    nombre: "aaa",
+    precio: 100,
     category_id: 100,
     category_name: "string",
-    description: "string",
-    stock: 0
+    descripcion: "string",
+    stock: 0,
+    in_stock: true
   };
   productId!: number;
   user!: User;
@@ -37,13 +38,14 @@ export class ProductDetailComponent implements OnInit {
     amount: 0,
     product_stock: 0,
     product: {
-      id: 0,
+      ID: 0,
       code: "",
-      name: "",
-      price: 0,
+      nombre: "",
+      precio: 0,
       category_id: 0,
-      description: "",
-      stock: 0
+      descripcion: "",
+      stock: 0,
+      in_stock: true
     },
     active: true
   };
@@ -73,17 +75,17 @@ export class ProductDetailComponent implements OnInit {
     this.productsService.getProduct(this.productId)
       .subscribe(data => {
         this.producto = data.data;
-        this.cart.product_id = this.producto.id;
+        this.cart.product_id = this.producto.ID;
         this.cart.quantity = 1
       });
   }
 
   getUser() {
-    this.usersService.getUserLogged()
-      .subscribe(data => {
-        this.user = data
-        this.cart.user_id = this.user.id;
-      })
+    // this.usersService.getUserLogged()
+    //   .subscribe(data => {
+    //     this.user = data
+    //     this.cart.user_id = this.user.id;
+    //   })
   }
 
   addToCart() {

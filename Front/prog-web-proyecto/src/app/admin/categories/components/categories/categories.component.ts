@@ -18,16 +18,16 @@ export class CategoriesComponent implements OnInit {
   }
 
   getCategories() {
-    this.categoriesService.getAllCategories()
-      .subscribe((data: any) => {
-        this.categories = data.data;
-      });
+    // this.categoriesService.getAllCategories()
+    //   .subscribe((data: any) => {
+    //     this.categories = data.data;
+    //   });
   }
 
   deleteCategory(id: number) {
     this.categoriesService.deleteCategory(id)
-    .subscribe(() => {
-      this.getCategories();
-    });
+      .subscribe(() => {
+        this.getCategories();
+      });
   }
 }

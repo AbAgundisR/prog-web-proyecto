@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,16 +8,16 @@ export class TokenService {
 
   constructor() { }
 
-  saveToken(token: string){
-    localStorage.setItem('token', token);
+  saveLoggedUser(token: any) {
+    localStorage.setItem('token', JSON.stringify(token));
   }
 
-  getToken(){
-    const token = localStorage.getItem('token');
+  getLoggedUser(): User | null {
+    const token: User = localStorage.getItem('token') != null ? JSON.parse(localStorage.getItem('token') || "") : null;
     return token;
   }
 
-  removeToken(){
+  removeLoggedUser() {
     localStorage.removeItem('token');
   }
 }

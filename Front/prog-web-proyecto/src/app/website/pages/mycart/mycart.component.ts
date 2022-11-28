@@ -25,14 +25,15 @@ export class MycartComponent implements OnInit {
       product_stock: 1,
       active: true,
       product: {
-        id: 1,
+        ID: 1,
         code: "aaa",
-        name: "aaa",
-        price: 100,
+        nombre: "aaa",
+        precio: 100,
         category_id: 100,
         category_name: "string",
-        description: "string",
-        stock: 0
+        descripcion: "string",
+        stock: 0,
+        in_stock: true
       }
     }
   ];
@@ -53,22 +54,19 @@ export class MycartComponent implements OnInit {
   }
 
   getUser() {
-    this.usersService.getUserLogged()
-      .subscribe(data => {
-        this.user = data
-        this.user_id = data.id
-        this.getCartUser()
-      })
+    this.user = this.usersService.getUserLogged() || {}
+    this.user_id = this.user.id || 0
+    this.getCartUser()
   }
 
   getCartUser() {
-    this.cartsService.getUserCart(this.user_id)
-      .subscribe(data => {
-        this.products = data.data
-        console.log(data.data)
-        // this.getProduct()
-        this.totalBuy()
-      })
+    // this.cartsService.getUserCart(this.user_id)
+    //   .subscribe(data => {
+    //     this.products = data.data
+    //     console.log(data.data)
+    //     // this.getProduct()
+    //     this.totalBuy()
+    //   })
   }
 
   totalBuy() {
@@ -95,7 +93,7 @@ export class MycartComponent implements OnInit {
     product.quantity = this.quantity - 1
     console.log(this.quantity)
     if (product.quantity == 0) {
-      this.deleteProduct(product.id)
+      this.deleteProduct(product.ID)
     }
     else {
       this.cartsService.updateQuantityProductOnCart(cart_id, product)

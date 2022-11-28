@@ -1,11 +1,12 @@
 export interface Producto {
-  id: number;
+  ID: number;
   code: string;
-  name: string;
-  price: number;
+  nombre: string;
+  precio: number;
   category_id: number;
   category_name?: string;
-  description: string;
+  descripcion: string;
+  in_stock: boolean;
   stock: number;
   created_at?: Date;
   updated_at?: Date;

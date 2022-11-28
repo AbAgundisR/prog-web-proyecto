@@ -10,7 +10,7 @@ import { User } from '../models/user.model';
 })
 export class AdminGuard implements CanActivate {
 
-  user!: User;
+  user!: User | null;
 
   constructor(
     private usersService: UsersService,
@@ -20,16 +20,16 @@ export class AdminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    this.usersService.getUserLogged()
-      .subscribe(data => {
-        this.user = data
+    this.user = this.usersService.getUserLogged()
+    if (this.user != null) {
+      if (this.user.is_superusuario == true) {
+        return true
+      } else {
+        // this.router.navigate(["/login"])
         console.log(this.user)
-      })
-    if (this.user.is_superuser == true) {
-      return true
+        return false
+      }
     } else {
-      // this.router.navigate(["/login"])
-      console.log(this.user)
       return false
     }
   }

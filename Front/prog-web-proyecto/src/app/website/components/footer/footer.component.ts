@@ -13,7 +13,7 @@ export class FooterComponent implements OnInit {
   user!: User
 
   constructor(
-    private usersService:UsersService,
+    private usersService: UsersService,
     private router: Router
   ) { }
 
@@ -22,13 +22,10 @@ export class FooterComponent implements OnInit {
   }
 
   getUser() {
-    this.usersService.getUserLogged()
-      .subscribe(data => {
-        this.user = data
-      })
+    this.user = this.usersService.getUserLogged() || {}
   }
 
-  logout(){
+  logout() {
     this.usersService.logout()
     this.router.navigate(["/login"])
   }

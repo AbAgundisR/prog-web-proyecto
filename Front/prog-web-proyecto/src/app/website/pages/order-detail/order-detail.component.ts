@@ -63,17 +63,9 @@ export class OrderDetailComponent implements OnInit {
   }
 
   getUser() {
-    this.usersService.getUserLogged()
-      .subscribe(data => {
-        this.user = data
-        this.user_id = this.user.id
-        this.order.user_id = this.user_id
-        this.usersService.getUser(this.user.id)
-          .subscribe(data => {
-            this.user = data
-            console.log(this.user)
-          })
-      })
+    this.user = this.usersService.getUserLogged() || {}
+    this.user_id = this.user.id || 0
+    this.order.user_id = this.user_id
   }
 
   goPayment() {

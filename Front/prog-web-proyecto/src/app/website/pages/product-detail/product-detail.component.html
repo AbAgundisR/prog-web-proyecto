@@ -15,10 +15,10 @@
     <div style="text-align: center;" *ngIf="creador">
         <input type="file" accept="image/*" (change)="procesarImagen($event)">
     </div>
-    <h2>{{producto.name}}</h2>
+    <h2>{{producto.nombre}}</h2>
     <p>{{producto.category_name}}</p>
-    <h3>${{producto.price}}</h3>
-    <p>{{producto.description}}</p>
+    <h3>${{producto.precio}}</h3>
+    <p>{{producto.descripcion}}</p>
     <br>
     <p>Stock disponible: <br> Cantidad: {{producto.stock}} unidad ({{producto.stock}} disponibles)</p>
     <div class="button-container">

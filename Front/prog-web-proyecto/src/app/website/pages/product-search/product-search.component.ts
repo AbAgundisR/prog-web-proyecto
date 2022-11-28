@@ -35,11 +35,11 @@ export class ProductSearchComponent implements OnInit {
   }
 
   private getProducts() {
-    this.productsService.searchProduct(this.product)
-      .subscribe(data => {
-        this.products = data.data;
-        console.log(this.products)
-      });
+    // this.productsService.searchProduct(this.product)
+    //   .subscribe(data => {
+    //     this.products = data.data;
+    //     console.log(this.products)
+    //   });
   }
 
   goProductDetail(id: number) {

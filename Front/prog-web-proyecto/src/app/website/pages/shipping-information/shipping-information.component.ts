@@ -30,7 +30,7 @@ export class ShippingInformationComponent implements OnInit {
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      id:[''],
+      id: [''],
       username: [''],
       email: [''],
       full_name: [''],
@@ -42,8 +42,8 @@ export class ShippingInformationComponent implements OnInit {
       address_cp: ['', Validators.required],
       address_line_1: ['', Validators.required],
       address_line_2: ['', Validators.required],
-      created_at:[''],
-      updated_at:['']
+      created_at: [''],
+      updated_at: ['']
     });
   }
 
@@ -85,18 +85,18 @@ export class ShippingInformationComponent implements OnInit {
     const data = this.form.value;
     console.log(data)
     this.usersService.updateUser(this.user_id, data)
-    .subscribe(rta => {
-      this.router.navigate(['/payment-method']);
-    });
+      .subscribe(rta => {
+        this.router.navigate(['/payment-method']);
+      });
   }
 
   getUser() {
-    this.usersService.getUserLogged()
-      .subscribe(data => {
-        this.form.patchValue(data);
-        this.user = data
-        this.user_id = this.user.id
-      })
+    // this.usersService.getUserLogged()
+    //   .subscribe(data => {
+    //     this.form.patchValue(data);
+    //     this.user = data
+    //     this.user_id = this.user.id
+    //   })
   }
 
 }

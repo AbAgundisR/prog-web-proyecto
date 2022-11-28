@@ -1,46 +1,46 @@
 <div class="container">
-    <div class="login-content">
-        <form [formGroup]="form">
-          <a href="">
-            <img src="assets/img/logo.png">
-          </a>
-            <h2 class="title">Iniciar sesión</h2>
-            <div class="input-div one">
-                <div class="i">
-                    <i class="fa fa-envelope"></i>
-                </div>
-                <div class="div">
-                    <h4>Correo electrónico</h4>
-                    <input formControlName="email" type="text" class="input">
-                </div>
-            </div>
-            <div class="messages" [class.active]="emailField!.touched && emailField!.invalid">
-              <p>
-                <strong *ngIf="emailField!.touched && emailField!.hasError('required')">Este campo es requerido</strong>
-              </p>
-            </div>
-            <div class="input-div pass">
-                <div class="i">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <div class="div">
-                    <h4>Contraseña</h4>
-                    <input formControlName="password" type="password" class="input">
-                </div>
-            </div>
-            <div class="messages" [class.active]="passwordField!.touched && passwordField!.invalid">
-              <p>
-                <strong *ngIf="passwordField!.touched && passwordField!.hasError('required')">Este campo es requerido</strong>
-              </p>
-            </div>
-            <div class="messages" [class.active]="passwordField!.touched">
-              <p>
-                <strong *ngIf="flag == true">Usuario o contraseña incorrectos</strong>
-              </p>
-            </div>
-            <input type="submit" id="btn-login" class="btn-login" value="Iniciar sesión" (click)="login()">
-            <h4>¿No tienes una cuenta?</h4>
-            <input type="button" id="btn-register" class="btn-register" value="Crear una cuenta" (click)="register()">
-        </form>
-    </div>
+  <div class="login-content">
+    <form [formGroup]="form">
+      <a href="">
+        <img src="assets/img/logo.png">
+      </a>
+      <h2 class="title">Iniciar sesión</h2>
+      <div class="input-div one">
+        <div class="i">
+          <i class="fa fa-envelope"></i>
+        </div>
+        <div class="div">
+          <h4>Nombre de usuario</h4>
+          <input formControlName="username" type="text" class="input">
+        </div>
+      </div>
+      <div class="messages" [class.active]="usernameField!.touched && usernameField!.invalid">
+        <p>
+          <strong *ngIf="usernameField!.touched && usernameField!.hasError('required')">Este campo es requerido</strong>
+        </p>
+      </div>
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div class="div">
+          <h4>Contraseña</h4>
+          <input formControlName="password" type="password" class="input">
+        </div>
+      </div>
+      <div class="messages" [class.active]="passwordField!.touched && passwordField!.invalid">
+        <p>
+          <strong *ngIf="passwordField!.touched && passwordField!.hasError('required')">Este campo es requerido</strong>
+        </p>
+      </div>
+      <div class="messages" [class.active]="passwordField!.touched">
+        <p>
+          <strong *ngIf="flag == true">Usuario o contraseña incorrectos</strong>
+        </p>
+      </div>
+      <input type="submit" id="btn-login" class="btn-login" value="Iniciar sesión" (click)="login()">
+      <h4>¿No tienes una cuenta?</h4>
+      <input type="button" id="btn-register" class="btn-register" value="Crear una cuenta" (click)="register()">
+    </form>
+  </div>
 </div>

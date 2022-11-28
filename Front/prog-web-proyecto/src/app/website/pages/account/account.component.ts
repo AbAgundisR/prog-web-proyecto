@@ -30,7 +30,7 @@ export class AccountComponent implements OnInit {
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      id:[''],
+      id: [''],
       username: [''],
       email: ['', Validators.required],
       full_name: ['', Validators.required],
@@ -42,8 +42,8 @@ export class AccountComponent implements OnInit {
       address_cp: ['', Validators.required],
       address_line_1: [''],
       address_line_2: [''],
-      created_at:[''],
-      updated_at:['']
+      created_at: [''],
+      updated_at: ['']
     });
   }
 
@@ -78,22 +78,15 @@ export class AccountComponent implements OnInit {
     const data = this.form.value;
     console.log(data)
     this.usersService.updateUser(this.user_id, data)
-    .subscribe(rta => {
-      this.router.navigate(['/home']);
-    });
+      .subscribe(rta => {
+        this.router.navigate(['/home']);
+      });
   }
 
   getUser() {
-    this.usersService.getUserLogged()
-      .subscribe(data => {
-        console.log(data)
-        this.usersService.getUser(data.id)
-        .subscribe(data => {
-          console.log(data)
-          this.form.patchValue(data);
-          this.user = data
-          this.user_id = this.user.id
-        })
-      })
+    this.user = this.usersService.getUserLogged() || {}
+    this.form.patchValue(this.user);
+    this.user = this.user
+    this.user_id = this.user.id || 0
   }
 }

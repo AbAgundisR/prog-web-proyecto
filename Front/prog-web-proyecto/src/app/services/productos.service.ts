@@ -8,16 +8,20 @@ import { environment } from '../../environments/environment';
 })
 export class ProductosService {
 
+  headers = {
+    "Access-Control-Allow-Origin": "*"
+  }
+
   private apiUrl = `${environment.API_URL}`;
 
   constructor(private http: HttpClient) { }
 
   getAllProducts() {
-    return this.http.get<any>(`${this.apiUrl}/Productos/read.php`);
+    return this.http.get<any>(`${this.apiUrl}/Productos/read.php`, { headers: this.headers });
   }
 
   getProduct(id: number) {
-    return this.http.get<any>(`${this.apiUrl}/Productos/readone.php`);
+    return this.http.get<any>(`${this.apiUrl}/Productos/readone.php`, { headers: this.headers });
   }
 
   createProduct(data: Partial<Producto>) {

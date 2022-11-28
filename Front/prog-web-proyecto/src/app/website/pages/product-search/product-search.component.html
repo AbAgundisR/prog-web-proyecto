@@ -5,14 +5,14 @@
         <div class="card border-dark">
             <!-- <img src="assets/img/producto.jpg" class="card-img-top"> -->
             <div class="card-body">
-                <h5 class="card-title ">{{product.name}}</h5>
-                <p class="card-text">{{product.description}}</p>
-                <p class="card-price">${{product.price}}</p>
-                <a (click)="goProductDetail(product.id)" class="btn">Ver</a>
+                <h5 class="card-title ">{{product.nombre}}</h5>
+                <p class="card-text">{{product.descripcion}}</p>
+                <p class="card-price">${{product.precio}}</p>
+                <a (click)="goProductDetail(product.ID)" class="btn">Ver</a>
             </div>
         </div>
     </div>
 </div>
 <div class="not-products">
-  <p *ngIf="products.length == 0">No hay productos que correspondan con la búsqueda</p>
+    <p *ngIf="products.length == 0">No hay productos que correspondan con la búsqueda</p>
 </div>

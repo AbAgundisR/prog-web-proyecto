@@ -22,8 +22,8 @@
 
     <tbody *ngFor="let product of products">
       <tr *ngIf="product.active == true" class="text">
-        <td>{{product.product.name}}</td>
-        <td>${{product.product.price}}</td>
+        <td>{{product.product.nombre}}</td>
+        <td>${{product.product.precio}}</td>
         <td>
           <button *ngIf="product.quantity < product.product.stock"
             (click)="updateQuantityProductsPlus(product.id, product)">

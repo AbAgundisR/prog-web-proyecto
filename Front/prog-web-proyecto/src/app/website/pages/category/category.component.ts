@@ -18,13 +18,13 @@ export class CategoryComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private productsService: ProductosService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      this.categoryId = params['id'];
-      this.productsService.getAllProductsByCategory(this.categoryId)
-        .subscribe((data) => {
-          this.products = data.data;
-        });
-    });
+    // this.route.params.subscribe((params: Params) => {
+    //   this.categoryId = params['id'];
+    //   this.productsService.getAllProductsByCategory(this.categoryId)
+    //     .subscribe((data) => {
+    //       this.products = data.data;
+    //     });
+    // });
   }
 
   goProductDetail(id: number) {

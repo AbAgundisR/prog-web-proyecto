@@ -8,11 +8,11 @@ import {
   HttpContextToken
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TokenService }  from './../services/token.service';
+import { TokenService } from './../services/token.service';
 
 const CHECK_TOKEN = new HttpContextToken<boolean>(() => false);
 
-export function checkToken(){
+export function checkToken() {
   return new HttpContext().set(CHECK_TOKEN, true)
 }
 
@@ -21,17 +21,17 @@ export class TokenInterceptor implements HttpInterceptor {
 
   constructor(
     private tokenService: TokenService
-  ) {}
+  ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if(request.context.get(CHECK_TOKEN)){
+    if (request.context.get(CHECK_TOKEN)) {
       request = this.addToken(request);
     }
     return next.handle(request);
   }
 
   private addToken(request: HttpRequest<unknown>) {
-    const token = this.tokenService.getToken();
+    const token = this.tokenService.getLoggedUser();
     if (token) {
       const authReq = request.clone({
         headers: request.headers.set('Authorization', `Token ${token}`)

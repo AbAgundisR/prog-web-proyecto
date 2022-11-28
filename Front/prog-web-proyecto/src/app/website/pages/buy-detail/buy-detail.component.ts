@@ -48,19 +48,9 @@ export class BuyDetailComponent implements OnInit {
   }
 
   getUser() {
-    this.usersService.getUserLogged()
-      .subscribe(data => {
-        this.user = data
-        this.user_id = this.user.id
-        this.order.user_id = this.user_id
-        this.usersService.getUser(this.user.id)
-          .subscribe(data => {
-            this.user = data
-            // console.log(this.user)
-          })
-        this.getCard()
-        this.getCartUser()
-      })
+    this.user = this.usersService.getUserLogged() || {}
+    this.user_id = this.user.id || 0
+    this.order.user_id = this.user_id
   }
 
   getCard() {
@@ -72,17 +62,17 @@ export class BuyDetailComponent implements OnInit {
   }
 
   getCartUser() {
-    this.cartsService.getUserCart(this.user_id)
-      .subscribe(data => {
-        this.carts = data.data
-        this.carts.forEach(cart => {
-          if (cart.active == true) {
-            this.products.push(cart)
-          }
-        })
+    // this.cartsService.getUserCart(this.user_id)
+    //   .subscribe(data => {
+    //     this.carts = data.data
+    //     this.carts.forEach(cart => {
+    //       if (cart.active == true) {
+    //         this.products.push(cart)
+    //       }
+    //     })
 
-        this.totalBuy()
-      })
+    //     this.totalBuy()
+    //   })
   }
 
   totalBuy() {
@@ -105,7 +95,7 @@ export class BuyDetailComponent implements OnInit {
     //   console.log(this.product.stock)
     //   console.log(this.product)
 
-    //   this.productsService.updateProduct(this.product.id, this.product)
+    //   this.productsService.updateProduct(this.product.ID, this.product)
     //   .subscribe(data => {})
 
     //   this.ordersService.createOrder(this.order)

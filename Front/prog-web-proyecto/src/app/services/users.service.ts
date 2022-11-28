@@ -13,6 +13,10 @@ import { environment } from './../../environments/environment';
 
 export class UsersService {
 
+  headers = {
+    "Access-Control-Allow-Origin": "*"
+  }
+
   private apiUrl = `${environment.API_URL}`;
 
   constructor(
@@ -21,18 +25,16 @@ export class UsersService {
   ) { }
 
   login(data: Partial<User>) {
-    return this.http.post<Auth>(`${this.apiUrl}/auth/login/`, data)
-      .pipe(
-        tap(response => this.tokenService.saveToken(response.token))
-      );
+    return this.http.post<User>(`${this.apiUrl}/Users/login.php`, data, { headers: this.headers });
   }
 
   logout() {
-    this.tokenService.removeToken()
+    this.tokenService.removeLoggedUser()
   }
 
-  getUserLogged() {
-    return this.http.get<any>(`${this.apiUrl}/auth/me`, { context: checkToken() });
+  getUserLogged(): User | null {
+    const token: User = localStorage.getItem('token') != null ? JSON.parse(localStorage.getItem('token') || "") : null;
+    return token;
   }
 
   getUser(id: number) {

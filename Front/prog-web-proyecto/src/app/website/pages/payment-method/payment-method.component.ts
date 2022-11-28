@@ -18,7 +18,7 @@ export class PaymentMethodComponent implements OnInit {
   user_id!: number;
   cards: Card[] = [];
   card_id: number = 0;
-  card: Card  = {
+  card: Card = {
     id: 0,
     user_id: 0,
     card_name: "",
@@ -81,9 +81,9 @@ export class PaymentMethodComponent implements OnInit {
   private updateCard() {
     const data = this.form.value;
     this.cardsService.updateCard(this.card_id, data)
-    .subscribe(rta => {
+      .subscribe(rta => {
 
-    });
+      });
   }
 
   private createCard() {
@@ -91,27 +91,27 @@ export class PaymentMethodComponent implements OnInit {
     this.card = data
     this.card.user_id = this.user_id
     this.cardsService.createCard(this.card)
-    .subscribe(() => {
-    });
+      .subscribe(() => {
+      });
   }
 
   getUser() {
-    this.usersService.getUserLogged()
-      .subscribe(data => {
-        this.user = data
-        this.user_id = this.user.id
-        this.getCard(this.user_id)
-      })
+    // this.usersService.getUserLogged()
+    //   .subscribe(data => {
+    //     this.user = data
+    //     this.user_id = this.user.id
+    //     this.getCard(this.user_id)
+    //   })
   }
 
-  getCard(user_id: number){
+  getCard(user_id: number) {
     this.cardsService.getCard(user_id)
-    .subscribe(data => {
-      this.cards = data.data
-      if(this.cards.length != 0){
-        this.form.patchValue(this.cards[0]);
-        this.card_id = this.cards[0].id
-      }
-    })
+      .subscribe(data => {
+        this.cards = data.data
+        if (this.cards.length != 0) {
+          this.form.patchValue(this.cards[0]);
+          this.card_id = this.cards[0].id
+        }
+      })
   }
 }

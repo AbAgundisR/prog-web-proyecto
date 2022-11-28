@@ -89,32 +89,26 @@ export class NavComponent implements OnInit {
   }
 
   getCategories() {
-    this.categoriesService.getAllCategories()
-      .subscribe((data: any) => {
-        this.categories = data.data;
-      });
+    // this.categoriesService.getAllCategories()
+    //   .subscribe((data: any) => {
+    //     this.categories = data.data;
+    //   });
   }
 
   getUser() {
-    this.usersService.getUserLogged()
-      .subscribe(data => {
-        this.user = data
-        this.usersService.getUser(this.user.id)
-        .subscribe(data => {
-          this.userName = data.full_name
-        })
-      })
+    this.user = this.usersService.getUserLogged() || {}
+    this.userName = this.user!.full_name || ""
   }
 
-  redirectUser(){
-    if(this.userName == "Inciar sesión"){
+  redirectUser() {
+    if (this.userName == "Inciar sesión") {
       this.router.navigate(["/login"]);
     } else {
       this.router.navigate(["/account"]);
     }
   }
 
-  productSearch(name: string){
+  productSearch(name: string) {
     this.router.navigate(['/product-search', name]);
   }
 }

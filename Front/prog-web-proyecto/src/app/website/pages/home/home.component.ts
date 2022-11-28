@@ -10,35 +10,35 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   products: Array<Producto> = [
-    {
-      id: 1,
-      code: "aaa",
-      name: "aaa",
-      price: 100,
-      category_id: 100,
-      category_name: "string",
-      description: "string",
-      stock: 0
-    },
-    {
-      id: 1,
-      code: "aaa",
-      name: "aaa",
-      price: 100,
-      category_id: 100,
-      category_name: "string",
-      description: "string",
-      stock: 0
-    }
+    // {
+    //   id: 1,
+    //   code: "aaa",
+    //   name: "aaa",
+    //   price: 100,
+    //   category_id: 100,
+    //   category_name: "string",
+    //   description: "string",
+    //   stock: 0
+    // },
+    // {
+    //   id: 1,
+    //   code: "aaa",
+    //   name: "aaa",
+    //   price: 100,
+    //   category_id: 100,
+    //   category_name: "string",
+    //   description: "string",
+    //   stock: 0
+    // }
   ];
 
   constructor(private productsService: ProductosService, private router: Router) { }
 
   ngOnInit(): void {
-    // this.productsService.getAllProducts()
-    //   .subscribe((data) => {
-    //     this.products = data.data;
-    //   });
+    this.productsService.getAllProducts()
+      .subscribe((data) => {
+        this.products = data.data;
+      });
   }
 
   goProductDetail(id: number) {

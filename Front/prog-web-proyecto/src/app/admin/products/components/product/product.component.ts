@@ -108,10 +108,10 @@ export class ProductComponent implements OnInit {
   }
 
   getCategories() {
-    this.categoriesService.getAllCategories()
-      .subscribe((data: any) => {
-        this.categories = data.data;
-      });
+    // this.categoriesService.getAllCategories()
+    //   .subscribe((data: any) => {
+    //     this.categories = data.data;
+    //   });
   }
 
 }

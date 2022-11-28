@@ -53,17 +53,17 @@ export class PaymentComponent implements OnInit {
   }
 
   getUser() {
-    this.usersService.getUserLogged()
-      .subscribe(data => {
-        this.user = data
-        this.user_id = this.user.id
-        this.payment.user_id = this.user_id
-        this.usersService.getUser(this.user.id)
-          .subscribe(data => {
-            this.user = data
-          })
-        this.getCard()
-      })
+    // this.usersService.getUserLogged()
+    //   .subscribe(data => {
+    //     this.user = data
+    //     this.user_id = this.user.id
+    //     this.payment.user_id = this.user_id
+    //     this.usersService.getUser(this.user.id)
+    //       .subscribe(data => {
+    //         this.user = data
+    //       })
+    //     this.getCard()
+    //   })
   }
 
   getCard() {

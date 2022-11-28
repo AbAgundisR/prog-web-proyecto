@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://prog-web-proyecto.000webhostapp.com/api',
+  API_URL: 'https://prog-web-proyecto.000webhostapp.com/api',
   firebase: {
     apiKey: "AIzaSyDJHXR2fbK5hARYDq6KUtUAXa6GycxzSOI",
     authDomain: "prog-web-proyecto.firebaseapp.com",
