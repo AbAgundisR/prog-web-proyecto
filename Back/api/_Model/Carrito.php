@@ -7,17 +7,9 @@ class Carrito
     private $table_name = "Carrito";
 
     // object properties
-    private $ID;
-    private $is_superusuario;
-    private $username;
-    private $email;
-    private $password;
-    private $nombre_completo;
-    private $direccion;
-    private $ciudad;
-    private $estado;
-    private $cp;
-    private $telefono;
+    public $user_ID;
+    public $producto_id;
+    public $cantidad;
 
     // constructor with $db as database connection
     public function __construct()

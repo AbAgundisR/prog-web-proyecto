@@ -29,7 +29,7 @@ if (!empty($data->pedido_ID) && !empty($data->producto_id)) {
 }
 
 // Prepare a select statement
-$sql = "DELETE FROM Pedido_productos WHERE pedido_ID = ? AND producto_id = ?";
+$sql = "DELETE FROM Pedidos_productos WHERE pedido_ID = ? AND producto_id = ?";
 
 if ($stmt = mysqli_prepare($db, $sql)) {
     // Bind variables to the prepared statement as parameters

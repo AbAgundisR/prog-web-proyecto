@@ -23,7 +23,7 @@ if (!empty($data->pedido_ID) && !empty($data->producto_id)) {
 }
 
 // Prepare a select statement
-$sql = "SELECT * FROM Pedido_productos WHERE pedido_ID = ? AND producto_id = ?";
+$sql = "SELECT * FROM Pedidos_productos WHERE pedido_ID = ? AND producto_id = ?";
 
 if ($stmt = mysqli_prepare($db, $sql)) {
     mysqli_stmt_bind_param($stmt, "ii", $param_pedido_ID, $param_producto_id);

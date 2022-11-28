@@ -29,7 +29,7 @@ if (!empty($data->pedido_ID) && !empty($data->producto_id) && !empty($data->cant
 }
 
 // Prepare a select statement
-$sql = "UPDATE Pedido_productos SET cantidad = ? WHERE pedido_ID = ? AND producto_id = ?";
+$sql = "UPDATE Pedidos_productos SET cantidad = ? WHERE pedido_ID = ? AND producto_id = ?";
 
 if ($stmt = mysqli_prepare($db, $sql)) {
     // Bind variables to the prepared statement as parameters

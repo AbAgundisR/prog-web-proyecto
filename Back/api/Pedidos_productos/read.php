@@ -21,7 +21,7 @@ if (!empty($data->pedido_ID)) {
 }
 
 // Prepare a select statement
-$sql = "SELECT * FROM Pedido_productos WHERE pedido_ID = ?";
+$sql = "SELECT * FROM Pedidos_productos WHERE pedido_ID = ?";
 
 if ($stmt = mysqli_prepare($db, $sql)) {
     // Bind variables to the prepared statement as parameters
