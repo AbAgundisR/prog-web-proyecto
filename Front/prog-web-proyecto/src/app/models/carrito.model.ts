@@ -3,8 +3,8 @@ import { Producto } from "./producto.model";
 export interface Carrito {
   id: number;
   user_id: number;
-  product_id: number;
-  quantity: number;
+  producto_id: number;
+  cantidad: number;
   amount: number;
   created_at?: Date;
   updated_at?: Date;

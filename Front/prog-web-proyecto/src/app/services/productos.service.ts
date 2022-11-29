@@ -23,7 +23,9 @@ export class ProductosService {
   }
 
   getProduct(id: number) {
-    return this.http.get<any>(`${this.apiUrl}/Productos/readone.php`, { headers: this.headers });
+    console.log(id);
+
+    return this.http.post<any>(`${this.apiUrl}/Productos/readone.php`, { "ID": id }, { headers: this.headers });
   }
 
   createProduct(data: Partial<Producto>) {

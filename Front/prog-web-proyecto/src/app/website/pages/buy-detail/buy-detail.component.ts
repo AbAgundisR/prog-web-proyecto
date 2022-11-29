@@ -10,6 +10,7 @@ import { CardsService } from 'src/app/services/cards.service';
 import { Router } from '@angular/router';
 import { Producto } from 'src/app/models/producto.model';
 import { ProductosService } from 'src/app/services/productos.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-buy-detail',
@@ -33,6 +34,7 @@ export class BuyDetailComponent implements OnInit {
   }
   order_number: number = 0
   stock!: number;
+  form!: FormGroup;
 
   constructor(
     private ordersService: PedidosService,
@@ -40,8 +42,28 @@ export class BuyDetailComponent implements OnInit {
     private cartsService: CarritosService,
     private cardsService: CardsService,
     private productsService: ProductosService,
+    private formBuilder: FormBuilder,
     private router: Router
   ) { }
+
+  private buildForm() {
+    this.form = this.formBuilder.group({
+      id: [''],
+      username: [''],
+      email: ['', Validators.required],
+      full_name: ['', Validators.required],
+      is_superuser: ['', Validators.required],
+      phone: [''],
+      address_country: [''],
+      address_state: [''],
+      address_city: [''],
+      address_cp: ['', Validators.required],
+      address_line_1: [''],
+      address_line_2: [''],
+      created_at: [''],
+      updated_at: ['']
+    });
+  }
 
   ngOnInit(): void {
     this.getUser()
@@ -49,8 +71,12 @@ export class BuyDetailComponent implements OnInit {
 
   getUser() {
     this.user = this.usersService.getUserLogged() || {}
-    this.user_id = this.user.id || 0
+    this.user_id = this.user.ID || 0
     this.order.user_id = this.user_id
+    this.cartsService.getCart(this.user_id).subscribe(data => {
+      this.products = data.carritos
+      this.totalBuy()
+    })
   }
 
   getCard() {
@@ -77,7 +103,7 @@ export class BuyDetailComponent implements OnInit {
 
   totalBuy() {
     this.products.forEach(product => {
-      this.total = this.total + product.amount
+      this.total = this.total + (product.product_price! * product.cantidad)
     });
   }
 
@@ -85,12 +111,12 @@ export class BuyDetailComponent implements OnInit {
     // console.log("Crear orden")
     // var order_number: number = Math.round(Math.sqrt(Date.now()))
     // this.order.order_number = order_number
-    // this.order.user_id = this.user.id
+    // this.order.user_id = this.user.ID
 
     // this.products.forEach(cart => {
     //   this.order.cart_id = cart.id
     //   this.product = cart.product
-    //   this.stock = this.product.stock - cart.quantity
+    //   this.stock = this.product.stock - cart.cantidad
     //   this.product.stock = this.stock
     //   console.log(this.product.stock)
     //   console.log(this.product)

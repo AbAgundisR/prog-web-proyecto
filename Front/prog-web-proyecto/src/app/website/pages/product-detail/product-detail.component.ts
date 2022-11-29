@@ -20,25 +20,7 @@ export class ProductDetailComponent implements OnInit {
   producto!: Producto;
   productId!: number;
   user!: User;
-  cart: Carrito = {
-    id: 1,
-    product_id: 0,
-    user_id: 0,
-    quantity: 0,
-    amount: 0,
-    product_stock: 0,
-    product: {
-      ID: 0,
-      code: "",
-      nombre: "",
-      precio: 0,
-      category_id: 0,
-      descripcion: "",
-      stock: 0,
-      in_stock: true
-    },
-    active: true
-  };
+  cart!: Carrito;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,10 +32,17 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.usersService.getUserLogged() || {}
+    console.log(this.user);
+
     this.route.params.subscribe((params: Params) => {
-      this.productId = params['id'];
-      if (this.productId) {
-        this.getProduct();
+      console.log(params);
+      if (params['id']) {
+        this.productId = params['id'];
+        this.productsService.getProduct(this.productId)
+          .subscribe(data => {
+            console.log(data)
+            this.producto = data;
+          });
       }
     });
     if (this.route.snapshot.queryParams['crear']) {
@@ -61,31 +50,23 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-  private getProduct() {
-    this.productsService.getProduct(this.productId)
-      .subscribe(data => {
-        this.producto = data.data;
-        this.cart.product_id = this.producto.ID;
-        this.cart.quantity = 1
-      });
-  }
-
   getUser() {
     // this.usersService.getUserLogged()
     //   .subscribe(data => {
     //     this.user = data
-    //     this.cart.user_id = this.user.id;
+    //     this.cart.user_id = this.user.ID;
     //   })
   }
 
   addToCart() {
-    // console.log(JSON.stringify(this.cart));
-    this.cartService.addToCart(this.cart)
-      .subscribe(() => { })
+    this.cartService.addToCart(this.user.ID || 0, this.productId)
+      .subscribe(() => {
+        this.router.navigate(['/my-cart']);
+      })
   }
 
   buy() {
-    this.cartService.addToCart(this.cart)
+    this.cartService.addToCart(this.user.ID || 0, this.productId)
       .subscribe(() => { })
     this.router.navigate(['/shipping-information']);
   }

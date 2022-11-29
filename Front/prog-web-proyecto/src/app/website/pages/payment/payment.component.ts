@@ -56,9 +56,9 @@ export class PaymentComponent implements OnInit {
     // this.usersService.getUserLogged()
     //   .subscribe(data => {
     //     this.user = data
-    //     this.user_id = this.user.id
+    //     this.user_id = this.user.ID
     //     this.payment.user_id = this.user_id
-    //     this.usersService.getUser(this.user.id)
+    //     this.usersService.getUser(this.user.ID)
     //       .subscribe(data => {
     //         this.user = data
     //       })

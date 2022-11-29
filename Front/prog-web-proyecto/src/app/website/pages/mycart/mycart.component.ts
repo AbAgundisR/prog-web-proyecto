@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/models/producto.model';
 import { UsersService } from '../../../services/users.service';
 import { User } from 'src/app/models/user.model';
@@ -15,30 +15,10 @@ import { Router } from '@angular/router';
 export class MycartComponent implements OnInit {
   user!: User;
   user_id!: number;
-  products: Carrito[] = [
-    {
-      id: 1,
-      user_id: 1,
-      product_id: 1,
-      quantity: 1,
-      amount: 100,
-      product_stock: 1,
-      active: true,
-      product: {
-        ID: 1,
-        code: "aaa",
-        nombre: "aaa",
-        precio: 100,
-        category_id: 100,
-        category_name: "string",
-        descripcion: "string",
-        stock: 0,
-        in_stock: true
-      }
-    }
-  ];
+  products!: Carrito[];
+  productsAux!: Carrito[];
   total: number = 0;
-  quantity: number = 0;
+  cantidad: number = 0;
   stock: number = 0;
 
   constructor(
@@ -49,37 +29,33 @@ export class MycartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.getUser()
-    this.totalBuy()
+    this.user = this.usersService.getUserLogged() || {}
+    this.user_id = this.user.ID || 0
+    this.cartsService.getCart(this.user_id)
+      .subscribe(data => {
+        this.products = data.carritos
+        console.log(this.products);
+        this.totalBuy()
+      })
   }
 
   getUser() {
-    this.user = this.usersService.getUserLogged() || {}
-    this.user_id = this.user.id || 0
-    this.getCartUser()
+
   }
 
   getCartUser() {
-    // this.cartsService.getUserCart(this.user_id)
-    //   .subscribe(data => {
-    //     this.products = data.data
-    //     console.log(data.data)
-    //     // this.getProduct()
-    //     this.totalBuy()
-    //   })
+
   }
 
   totalBuy() {
     this.products.forEach(product => {
-      if (product.active == true) {
-        this.total = this.total + product.amount
-      }
+      this.total = this.total + (product.product_price! * product.cantidad)
     });
   }
 
   updateQuantityProductsPlus(cart_id: number, product: any) {
-    this.quantity = product.quantity
-    product.quantity = this.quantity + 1
+    this.cantidad = product.cantidad
+    product.cantidad = this.cantidad + 1
     this.cartsService.updateQuantityProductOnCart(cart_id, product)
       .subscribe(data => {
         product.amount = data.data.amount
@@ -89,10 +65,10 @@ export class MycartComponent implements OnInit {
   }
 
   updateQuantityProductsMinus(cart_id: number, product: any) {
-    this.quantity = product.quantity
-    product.quantity = this.quantity - 1
-    console.log(this.quantity)
-    if (product.quantity == 0) {
+    this.cantidad = product.cantidad
+    product.cantidad = this.cantidad - 1
+    console.log(this.cantidad)
+    if (product.cantidad == 0) {
       this.deleteProduct(product.ID)
     }
     else {
@@ -145,7 +121,7 @@ export class MycartComponent implements OnInit {
   //     updated_at: new Date()
   //   });*/
   //   //var cart = this.cartsService.getCart()
-  //   this.cartsService.getUserCart(this.user.id).subscribe(data=>{
+  //   this.cartsService.getUserCart(this.user.ID).subscribe(data=>{
   //     data.data.forEach((cart:Cart)=>{
   //       var product!:Product
   //       this.productService.getProduct(cart.product_id).subscribe(data=>{

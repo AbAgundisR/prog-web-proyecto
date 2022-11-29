@@ -13,9 +13,9 @@
 
     <tbody *ngFor="let product of products">
       <tr class="text">
-        <td>{{product.product.nombre}}</td>
-        <td>${{product.product.precio}}</td>
-        <td>${{product.amount}}</td>
+        <td>{{product.product_name}}</td>
+        <td>${{product.product_price}}</td>
+        <td>${{product.cantidad * product.product_price!}}</td>
       </tr>
     </tbody>
   </table>
@@ -30,73 +30,75 @@
   <hr>
 
   <h3>Datos de envío</h3>
-  <div class="datos-envio">
-    <div>
-      <p>Nombre</p>
-      <input class="input1" type="text" disabled value="{{user.full_name}}">
-    </div>
-    <div>
-      <p>Teléfono</p>
-      <input class="input1" type="text" disabled value="{{user.phone}}">
-    </div>
-  </div>
-  <div class="datos-envio">
-    <div>
-      <p>Dirección</p>
-      <input class="input2" type="text" disabled value="{{user.address_line_1}}">
-    </div>
-    <div>
-      <p>Colonia</p>
-      <input class="input2" type="text" disabled value="{{user.address_line_2}}">
-    </div>
 
-    <div>
+  <form [formGroup]="form">
+    <div class="datos-envio">
       <div>
-        <p>Ciudad</p>
-        <input class="input2" type="text" disabled value="{{user.address_city}}">
+        <p>Nombre</p>
+        <input formControlName="username" class="input1" type="text" value="{{user.full_name}}">
+      </div>
+      <div>
+        <p>Teléfono</p>
+        <input formControlName="username" class="input1" type="text" value="{{user.phone}}">
       </div>
     </div>
-  </div>
-  <div class="datos-envio">
-    <div>
-      <p>Estado</p>
-      <input class="input2" type="text" disabled value="{{user.address_state}}">
-    </div>
-    <div>
-      <p>País</p>
-      <input class="input2" type="text" disabled value="{{user.address_country}}">
-    </div>
-    <div>
-      <p>Código postal</p>
-      <input class="input2" type="text" disabled value="{{user.address_cp}}">
-    </div>
-  </div>
+    <div class="datos-envio">
+      <div>
+        <p>Dirección</p>
+        <input formControlName="username" class="input2" type="text" value="{{user.address_line_1}}">
+      </div>
+      <div>
+        <p>Colonia</p>
+        <input formControlName="username" class="input2" type="text" value="{{user.address_line_2}}">
+      </div>
 
-  <br>
-  <hr>
+      <div>
+        <div>
+          <p>Ciudad</p>
+          <input formControlName="username" class="input2" type="text" value="{{user.address_city}}">
+        </div>
+      </div>
+    </div>
+    <div class="datos-envio">
+      <div>
+        <p>Estado</p>
+        <input formControlName="username" class="input2" type="text" value="{{user.address_state}}">
+      </div>
+      <div>
+        <p>País</p>
+        <input formControlName="username" class="input2" type="text" value="{{user.address_country}}">
+      </div>
+      <div>
+        <p>Código postal</p>
+        <input formControlName="username" class="input2" type="text" value="{{user.address_cp}}">
+      </div>
+    </div>
 
-  <h3>Datos del pago</h3>
-  <div class="payment">
-    <div>
-      <p>Nombre del propietario</p>
-      <input class="name" type="text" disabled value="{{cards[0].card_name}}">
+    <br>
+    <hr>
+
+    <h3>Datos del pago</h3>
+    <div class="payment">
+      <div>
+        <p>Nombre del propietario</p>
+        <input formControlName="username" class="name" type="text">
+      </div>
+      <div>
+        <p>Número de tarjeta</p>
+        <input formControlName="username" class="number" type="text">
+      </div>
     </div>
-    <div>
-      <p>Número de tarjeta</p>
-      <input class="number" type="text" disabled value="{{cards[0].card_number}}">
+    <div class="payment">
+      <div>
+        <p>Fecha de vencimiento</p>
+        <input formControlName="username" class="date" type="text">
+      </div>
+      <div>
+        <p>CVV</p>
+        <input formControlName="username" class="cvc" type="text">
+      </div>
     </div>
-  </div>
-  <div class="payment">
-    <div>
-      <p>Fecha de vencimiento</p>
-      <input class="date" type="text" disabled value="{{cards[0].card_expiration_date}}">
+    <div class="button-container">
+      <button type="button" class="buy-now" (click)="createOrder()">Confirmar compra</button>
     </div>
-    <div>
-      <p>CVV</p>
-      <input class="cvc" type="text" disabled value="{{cards[0].card_cvc}}">
-    </div>
-  </div>
-</div>
-<div class="button-container">
-  <button type="button" class="buy-now" (click)="createOrder()">Confirmar compra</button>
-</div>
+  </form>

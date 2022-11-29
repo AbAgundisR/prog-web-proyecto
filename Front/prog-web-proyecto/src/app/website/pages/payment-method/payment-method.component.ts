@@ -99,7 +99,7 @@ export class PaymentMethodComponent implements OnInit {
     // this.usersService.getUserLogged()
     //   .subscribe(data => {
     //     this.user = data
-    //     this.user_id = this.user.id
+    //     this.user_id = this.user.ID
     //     this.getCard(this.user_id)
     //   })
   }

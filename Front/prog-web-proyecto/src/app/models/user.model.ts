@@ -1,5 +1,5 @@
 export interface User {
-  id?: number;
+  ID?: number;
   is_superusuario?: boolean;
   username?: string;
   email?: string;

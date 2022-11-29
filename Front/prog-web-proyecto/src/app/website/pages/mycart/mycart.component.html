@@ -17,16 +17,15 @@
       <th>Producto</th>
       <th>Precio</th>
       <th>Cantidad</th>
-      <th>Subtotal</th>
     </thead>
 
     <tbody *ngFor="let product of products">
-      <tr *ngIf="product.active == true" class="text">
-        <td>{{product.product.nombre}}</td>
-        <td>${{product.product.precio}}</td>
+      <tr class="text">
+        <td>{{product.product_name}}</td>
+        <td>${{product.product_price}}</td>
         <td>
-          <button *ngIf="product.quantity < product.product.stock"
-            (click)="updateQuantityProductsPlus(product.id, product)">
+          <button>
+            <!--(click)="updateQuantityProductsPlus(product.id, product)"-->
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="15" height="15"
               viewBox="0 0 24 24" stroke-width="1.5" stroke="#222831" fill="none" stroke-linecap="round"
               stroke-linejoin="round">
@@ -36,9 +35,9 @@
             </svg>
           </button>
           <a>
-            {{product.quantity}}
+            {{product.cantidad}}
           </a>
-          <button *ngIf="product.quantity > 0" (click)="updateQuantityProductsMinus(product.id, product)">
+          <button *ngIf="product.cantidad > 0" (click)="updateQuantityProductsMinus(product.id, product)">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="15" height="15"
               viewBox="0 0 24 24" stroke-width="1.5" stroke="#222831" fill="none" stroke-linecap="round"
               stroke-linejoin="round">
@@ -47,7 +46,6 @@
             </svg>
           </button>
         </td>
-        <td>${{product.amount}}</td>
       </tr>
     </tbody>
   </table>

@@ -12,11 +12,11 @@ export class CarritosService {
   constructor(private http: HttpClient) { }
 
   getCart(id: number) {
-    return this.http.get<any>(`${this.apiUrl}/Carrito/read.php`, { headers: environment.headers })
+    return this.http.post<any>(`${this.apiUrl}/Carrito/read.php`, { user_ID: id }, { headers: {} })
   }
 
-  addToCart(data: any) {
-    return this.http.post(`${this.apiUrl}/Carrito/create.php`, data, { headers: environment.headers })
+  addToCart(user_ID: number, product_id: number) {
+    return this.http.post(`${this.apiUrl}/Carrito/create.php`, { user_ID: user_ID, producto_id: product_id }, { headers: {} })
   }
 
   updateQuantityProductOnCart(cart_id: number, data: any) {

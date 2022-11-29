@@ -95,7 +95,7 @@ export class ShippingInformationComponent implements OnInit {
     //   .subscribe(data => {
     //     this.form.patchValue(data);
     //     this.user = data
-    //     this.user_id = this.user.id
+    //     this.user_id = this.user.ID
     //   })
   }
 

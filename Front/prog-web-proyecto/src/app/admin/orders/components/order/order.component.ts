@@ -58,7 +58,7 @@ export class OrderComponent implements OnInit {
       order_number: [''],
       product_id: [''],
       user_id: [''],
-      quantity: [''],
+      cantidad: [''],
       total_price: [''],
       status: [''],
       created_at: [''],

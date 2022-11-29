@@ -50,7 +50,7 @@ export class OrderDetailComponent implements OnInit {
           this.orders.forEach(order => {
             this.cartService.getCart(order.cart_id)
               .subscribe(data => {
-                this.cart = data.data;
+                this.cart = data;
                 this.carts.push(this.cart)
                 console.log(this.carts)
                 this.carts.forEach(cart => {
@@ -64,7 +64,7 @@ export class OrderDetailComponent implements OnInit {
 
   getUser() {
     this.user = this.usersService.getUserLogged() || {}
-    this.user_id = this.user.id || 0
+    this.user_id = this.user.ID || 0
     this.order.user_id = this.user_id
   }
 

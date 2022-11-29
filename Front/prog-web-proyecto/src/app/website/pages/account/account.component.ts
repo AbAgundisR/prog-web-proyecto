@@ -87,6 +87,6 @@ export class AccountComponent implements OnInit {
     this.user = this.usersService.getUserLogged() || {}
     this.form.patchValue(this.user);
     this.user = this.user
-    this.user_id = this.user.id || 0
+    this.user_id = this.user.ID || 0
   }
 }
