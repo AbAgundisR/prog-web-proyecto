@@ -10,7 +10,7 @@
       <h4>Número de orden</h4>
       <p>{{order_number}}</p>
       <h4>Estatus</h4>
-      <p>{{order.status}}</p>
+      <p>PAGADA</p>
     </div>
     <div>
       <h4>Fecha</h4>
@@ -25,27 +25,27 @@
   <div class="payment">
     <div>
       <p>Nombre del propietario</p>
-      <input class="name" type="text" disabled value="{{cards[0].card_name}}">
+      <input class="name" type="text" disabled value="">
     </div>
     <div>
       <p>Número de tarjeta</p>
-      <input class="number" type="text" disabled value="{{cards[0].card_number}}">
+      <input class="number" type="text" disabled value="">
     </div>
   </div>
   <div class="payment">
     <div>
       <p>Fecha de vencimiento</p>
-      <input class="date" type="text" disabled value="{{cards[0].card_expiration_date}}">
+      <input class="date" type="text" disabled value="">
     </div>
     <div>
       <p>CVV</p>
-      <input class="cvc" type="text" disabled value="{{cards[0].card_cvc}}">
+      <input class="cvc" type="text" disabled value="">
     </div>
   </div>
 </div>
-<div *ngIf="order.status != 'PAGADO.'" class="button-container">
+<!-- <div *ngIf="order.status != 'PAGADO.'" class="button-container">
   <button type="button" class="buy-now" (click)="pay()">Pagar</button>
-</div>
-<div *ngIf="order.status == 'PAGADO.'" class="button-container">
+</div> -->
+<div class="button-container">
   <button type="button" class="buy-now" (click)="backHome()">Ir al inicio</button>
 </div>

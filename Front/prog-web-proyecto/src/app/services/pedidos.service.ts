@@ -21,12 +21,12 @@ export class PedidosService {
     return this.http.get<any>(`${this.apiUrl}/Pedidos/read.php`, { headers: environment.headers });
   }
 
-  getOrder(order: any) {
-    return this.http.get<any>(`${this.apiUrl}/Pedidos/readone.php`, { headers: environment.headers });
+  getOrder(order_number: number) {
+    return this.http.post<any>(`${this.apiUrl}/Pedidos/readone.php`, { pedido_ID: order_number }, { headers: {} });
   }
 
   createOrder(data: Partial<Pedido>) {
-    return this.http.post<Pedido>(`${this.apiUrl}/Pedidos/create.php`, data, { headers: environment.headers });
+    return this.http.post<any>(`${this.apiUrl}/Pedidos/create.php`, data, { headers: {} });
   }
 
   updateOrder(id: number, data: Partial<Pedido>) {

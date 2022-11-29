@@ -1,7 +1,8 @@
 <div class="container">
     <div style=" text-align: center;">
         <img src="assets/img/camisetaBlanca.png" class="card-img-shirt">
-        <img src="data:image/png;base64,{{producto.imagen}}" alt="" class="card-img-content">
+        <img *ngIf="!creador" src="data:image/png;base64,{{producto.imagen}}" alt="" class="card-img-content">
+        <img *ngIf="creador" [src]="src" alt="" class="card-img-content">
         <!-- src="assets/img/rey_recesvinto.png" -->
     </div>
     <div style="text-align: center;">
@@ -15,11 +16,13 @@
     <div style="text-align: center;" *ngIf="creador">
         <input type="file" accept="image/*" (change)="procesarImagen($event)">
     </div>
-    <h2>{{producto.nombre}}</h2>
-    <h3>${{producto.precio}}</h3>
-    <p>{{producto.descripcion}}</p>
+    <h2 *ngIf="!creador">{{producto.nombre}}</h2>
+    <h3 *ngIf="!creador">${{producto.precio}}</h3>
+    <p *ngIf="!creador">{{producto.descripcion}}</p>
     <br>
-    <p *ngIf="producto.in_stock">Stock disponible</p>
+    <div *ngIf="!creador">
+        <p *ngIf="producto.in_stock">Stock disponible</p>
+    </div>
     <div class="button-container">
         <button type="button" class="cart" (click)="addToCart()">Agregar al carrito</button>
         <!-- <button type="button" class="buy-now" (click)="buy()">Comprar ahora</button> -->

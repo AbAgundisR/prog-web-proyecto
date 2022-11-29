@@ -6,6 +6,8 @@ import { UsersService } from 'src/app/services/users.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { CarritosService } from 'src/app/services/carritos.service';
 import { Carrito } from 'src/app/models/carrito.model';
+import { PedidoProductoService } from 'src/app/services/pedido-producto.service';
+import { PedidoProducto } from 'src/app/models/pedido-producto';
 
 @Component({
   selector: 'app-order-detail',
@@ -18,6 +20,7 @@ export class OrderDetailComponent implements OnInit {
   user_id!: number;
   cart!: Carrito;
   carts: Carrito[] = [];
+  productos: PedidoProducto[] = [];
   total: number = 0;
   order!: Pedido
   orders!: Pedido[];
@@ -27,6 +30,7 @@ export class OrderDetailComponent implements OnInit {
 
   constructor(
     private ordersService: PedidosService,
+    private orderProductoService: PedidoProductoService,
     private usersService: UsersService,
     private cartService: CarritosService,
     private router: Router,
@@ -34,38 +38,37 @@ export class OrderDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUser()
-    this.fechaF = this.fecha.toLocaleDateString()
+    this.user = this.usersService.getUserLogged() || {}
+    this.user_id = this.user.ID || 0
+
     this.route.params.subscribe((params: Params) => {
-      this.order_number = params['order'];
+      if (params['order']) {
+        this.order_number = params['order'];
+        console.log(this.order_number);
 
-      this.ordersService.getOrder(this.order_number)
-        .subscribe(data => {
-          console.log(data)
-          this.order = data[0]
-          console.log(this.order)
-          this.orders = data[0][this.order_number]
-          console.log(this.orders)
+        this.ordersService.getOrder(this.order_number).subscribe(data => {
+          console.log(data);
 
-          this.orders.forEach(order => {
-            this.cartService.getCart(order.cart_id)
-              .subscribe(data => {
-                this.cart = data;
-                this.carts.push(this.cart)
-                console.log(this.carts)
-                this.carts.forEach(cart => {
-                  this.total += cart.amount
-                })
-              })
+          this.order = data
+
+          this.orderProductoService.getPedidoProducts(this.order.pedido_ID).subscribe(data => {
+            console.log(data);
+
+            this.productos = data.pedido_productos
+            this.productos.forEach(prod => {
+              this.total = this.total + (prod.precio! * prod.cantidad)
+            })
           })
         })
-    })
+      }
+    });
+
+    this.fechaF = this.fecha.toLocaleDateString()
+
   }
 
   getUser() {
-    this.user = this.usersService.getUserLogged() || {}
-    this.user_id = this.user.ID || 0
-    this.order.user_id = this.user_id
+
   }
 
   goPayment() {

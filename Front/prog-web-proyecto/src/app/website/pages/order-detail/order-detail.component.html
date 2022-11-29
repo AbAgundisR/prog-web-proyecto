@@ -8,7 +8,7 @@
       <h4>Número de orden</h4>
       <p>{{order_number}}</p>
       <h4>Estatus</h4>
-      <p>{{order.status}}</p>
+      <p>PAGADA</p>
     </div>
     <div>
       <h4>Fecha</h4>
@@ -27,11 +27,11 @@
       <th>Subtotal</th>
     </thead>
 
-    <tbody *ngFor="let product of carts">
+    <tbody *ngFor="let product of productos">
       <tr class="text">
-        <td>{{product.product.nombre}}</td>
+        <td>{{product.nombre}}</td>
         <td>{{product.cantidad}}</td>
-        <td>${{product.amount}}</td>
+        <td>${{product.precio! * product.cantidad!}}</td>
       </tr>
     </tbody>
   </table>

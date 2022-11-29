@@ -15,6 +15,10 @@ export class PedidoProductoService {
     return this.http.get<any>(`${this.apiUrl}/Pedidos_productos/create.php`, { headers: environment.headers });
   }
 
+  getPedidoProducts(pedido_ID: number) {
+    return this.http.post<any>(`${this.apiUrl}/Pedidos_productos/read.php`, { pedido_ID: pedido_ID }, { headers: {} });
+  }
+
   getPedidoProduct(id: number) {
     return this.http.get<any>(`${this.apiUrl}/Pedidos_productos/readone.php`, { headers: environment.headers });
   }
