@@ -17,6 +17,8 @@ export class ProductosService {
   constructor(private http: HttpClient) { }
 
   getAllProducts() {
+    console.log("trayendo productos");
+
     return this.http.get<any>(`${this.apiUrl}/Productos/read.php`, { headers: this.headers });
   }
 
@@ -25,14 +27,14 @@ export class ProductosService {
   }
 
   createProduct(data: Partial<Producto>) {
-    return this.http.post(`${this.apiUrl}/Productos/create.php`, data);
+    return this.http.post(`${this.apiUrl}/Productos/create.php`, data, { headers: environment.headers });
   }
 
   updateProduct(id: number, data: any) {
-    return this.http.put<Producto>(`${this.apiUrl}/Productos/update.php`, data);
+    return this.http.put<Producto>(`${this.apiUrl}/Productos/update.php`, data, { headers: environment.headers });
   }
 
   deleteProduct(id: number) {
-    return this.http.delete(`${this.apiUrl}/Productos/delete.php`);
+    return this.http.delete(`${this.apiUrl}/Productos/delete.php`, { headers: environment.headers });
   }
 }

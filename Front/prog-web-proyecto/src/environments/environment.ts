@@ -12,6 +12,9 @@ export const environment = {
     storageBucket: "prog-web-proyecto.appspot.com",
     messagingSenderId: "1043220652675",
     appId: "1:1043220652675:web:c89588f0558767997bb1b6"
+  },
+  headers: {
+    'Content-Type': 'text/plain'
   }
 };
 

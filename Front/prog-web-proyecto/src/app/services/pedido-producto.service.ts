@@ -12,22 +12,22 @@ export class PedidoProductoService {
   constructor(private http: HttpClient) { }
 
   getAllPedidoProducts() {
-    return this.http.get<any>(`${this.apiUrl}/Pedidos_productos/create.php`);
+    return this.http.get<any>(`${this.apiUrl}/Pedidos_productos/create.php`, { headers: environment.headers });
   }
 
   getPedidoProduct(id: number) {
-    return this.http.get<any>(`${this.apiUrl}/Pedidos_productos/readone.php`);
+    return this.http.get<any>(`${this.apiUrl}/Pedidos_productos/readone.php`, { headers: environment.headers });
   }
 
   createPedidoProduct(data: Partial<PedidoProducto>) {
-    return this.http.post(`${this.apiUrl}/Pedidos_productos/create.php`, data);
+    return this.http.post(`${this.apiUrl}/Pedidos_productos/create.php`, data, { headers: environment.headers });
   }
 
   updatePedidoProduct(id: number, data: any) {
-    return this.http.put<PedidoProducto>(`${this.apiUrl}/Pedidos_productos/update.php`, data);
+    return this.http.put<PedidoProducto>(`${this.apiUrl}/Pedidos_productos/update.php`, data, { headers: environment.headers });
   }
 
   deletePedidoProduct(id: number) {
-    return this.http.delete(`${this.apiUrl}/Pedidos_productos/delete.php`);
+    return this.http.delete(`${this.apiUrl}/Pedidos_productos/delete.php`, { headers: environment.headers });
   }
 }

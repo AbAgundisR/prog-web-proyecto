@@ -7,29 +7,24 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class CarritosService {
-
-  headers = {
-    "Access-Control-Allow-Origin": "*"
-  }
-
   private apiUrl = `${environment.API_URL}`;
 
   constructor(private http: HttpClient) { }
 
   getCart(id: number) {
-    return this.http.get<any>(`${this.apiUrl}/Carrito/read.php`, { headers: this.headers })
+    return this.http.get<any>(`${this.apiUrl}/Carrito/read.php`, { headers: environment.headers })
   }
 
   addToCart(data: any) {
-    return this.http.post(`${this.apiUrl}/Carrito/create.php`, data, { headers: this.headers })
+    return this.http.post(`${this.apiUrl}/Carrito/create.php`, data, { headers: environment.headers })
   }
 
   updateQuantityProductOnCart(cart_id: number, data: any) {
-    return this.http.put<any>(`${this.apiUrl}/Carrito/update.php`, data)
+    return this.http.put<any>(`${this.apiUrl}/Carrito/update.php`, data, { headers: environment.headers })
   }
 
   deleteProductOnCart(cart_id: number) {
-    return this.http.delete(`${this.apiUrl}/Carrito/delete.php`)
+    return this.http.delete(`${this.apiUrl}/Carrito/delete.php`, { headers: environment.headers })
   }
 
   //----------------------------------------------------------------------------------

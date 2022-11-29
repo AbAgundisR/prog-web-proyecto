@@ -26,8 +26,8 @@ export class NavComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getCategories();
-    this.getUser();
+    // this.getCategories();
+    // this.getUser();
   }
 
   //Elementos para menu responsivo-----------------------------------------------------

@@ -18,18 +18,18 @@ export class PedidosService {
   //  }
 
   getAllOrders() {
-    return this.http.get<any>(`${this.apiUrl}/Pedidos/read.php`);
+    return this.http.get<any>(`${this.apiUrl}/Pedidos/read.php`, { headers: environment.headers });
   }
 
   getOrder(order: any) {
-    return this.http.get<any>(`${this.apiUrl}/Pedidos/readone.php`);
+    return this.http.get<any>(`${this.apiUrl}/Pedidos/readone.php`, { headers: environment.headers });
   }
 
   createOrder(data: Partial<Pedido>) {
-    return this.http.post<Pedido>(`${this.apiUrl}/Pedidos/create.php`, data);
+    return this.http.post<Pedido>(`${this.apiUrl}/Pedidos/create.php`, data, { headers: environment.headers });
   }
 
   updateOrder(id: number, data: Partial<Pedido>) {
-    return this.http.put(`${this.apiUrl}/Pedidos/update.php`, data);
+    return this.http.put(`${this.apiUrl}/Pedidos/update.php`, data, { headers: environment.headers });
   }
 }
