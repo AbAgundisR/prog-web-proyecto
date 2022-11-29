@@ -1,14 +1,15 @@
 <?php
 // required headers
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
-header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
+// header("Content-Type: application/json; charset=UTF-8");
+// header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+// header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
 
 // database connection will be here
 // include database and object files
 include_once '../_Config/config.php';
 include_once '../_Model/User.php';
+include_once '../_Config/cors_handler.php';
 
 // instantiate database and product object
 $database = new Database();
@@ -52,6 +53,7 @@ if ($stmt = mysqli_prepare($db, $sql)) {
             $user->estado = $row["estado"];
             $user->cp = $row["cp"];
             $user->telefono = $row["telefono"];
+            $user->username = $row["username"];
 
             $user->password = $row["password"];
 

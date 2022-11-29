@@ -1,22 +1,24 @@
 <?php
-class Database{    
+class Database
+{
     // get the database connection
-    public function getConnection(){
+    public function getConnection()
+    {
         /* Database credentials. Assuming you are running MySQL
         server with default setting (user 'root' with no password) */
         $DB_SERVER = 'localhost';
-        $DB_USERNAME = 'id19914187_admin';
-        $DB_PASSWORD = 'yo3^+AyQq6G9%gLQ';
-        $DB_NAME = 'id19914187_db';
-        
+        $DB_USERNAME = 'root';
+        $DB_PASSWORD = '';
+        $DB_NAME = 'bd_proyectophp';
+
         $this->conn = null;
-  
-        try{
+
+        try {
             $this->conn = mysqli_connect($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_NAME);
-        }catch(PDOException $exception){
+        } catch (PDOException $exception) {
             echo "Connection error: " . $exception->getMessage();
         }
-  
+
         return $this->conn;
     }
 

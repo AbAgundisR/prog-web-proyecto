@@ -17,17 +17,7 @@ export class ProductDetailComponent implements OnInit {
   creador: boolean = false;
   src: any;
 
-  producto: Producto = {
-    ID: 1,
-    code: "aaa",
-    nombre: "aaa",
-    precio: 100,
-    category_id: 100,
-    category_name: "string",
-    descripcion: "string",
-    stock: 0,
-    in_stock: true
-  };
+  producto!: Producto;
   productId!: number;
   user!: User;
   cart: Carrito = {
@@ -59,13 +49,13 @@ export class ProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.getUser()
-    // this.route.params.subscribe((params: Params) => {
-    //   this.productId = params['id'];
-    //   if (this.productId) {
-    //     this.getProduct();
-    //   }
-    // });
+    this.user = this.usersService.getUserLogged() || {}
+    this.route.params.subscribe((params: Params) => {
+      this.productId = params['id'];
+      if (this.productId) {
+        this.getProduct();
+      }
+    });
     if (this.route.snapshot.queryParams['crear']) {
       this.creador = true;
     }

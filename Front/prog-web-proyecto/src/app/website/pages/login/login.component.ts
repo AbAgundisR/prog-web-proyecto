@@ -50,6 +50,8 @@ export class LoginComponent implements OnInit {
     console.log(data)
     this.usersService.login(data)
       .subscribe(rta => {
+        console.log(rta);
+
         this.tokenService.saveLoggedUser(rta)
         this.token = rta;
         if (this.token != null) {

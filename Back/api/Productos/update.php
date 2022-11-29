@@ -42,7 +42,7 @@ if ($stmt = mysqli_prepare($db, $sql)) {
     // Bind variables to the prepared statement as parameters
     mysqli_stmt_bind_param(
         $stmt,
-        "sdsisii",
+        "sdsibii",
         $param_nombre,
         $param_precio,
         $param_descripcion,

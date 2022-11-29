@@ -50,7 +50,7 @@ export class UsersService {
   }
 
   createUser(data: Partial<User>) {
-    return this.http.post<User>(`${this.apiUrl}/Users/create.php`, data, { headers: environment.headers });
+    return this.http.post<User>(`${this.apiUrl}/Users/create.php`, data, { headers: {} });
   }
 
   updateUser(id: number, data: Partial<User>) {

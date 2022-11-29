@@ -2,9 +2,9 @@
 // required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Max-Age: 3600");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+// header("Access-Control-Allow-Methods: POST");
+// header("Access-Control-Max-Age: 3600");
+// header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     echo 'not post';
@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 
 include_once '../_Config/config.php';
 include_once '../_Model/User.php';
+include_once '../_Config/cors_handler.php';
 
 // instantiate database and product object
 $database = new Database();
@@ -43,7 +44,7 @@ if ($stmt = mysqli_prepare($db, $sql)) {
     // Attempt to execute the prepared statement
     if (mysqli_stmt_execute($stmt)) {
         // tell the user
-        echo json_encode(array("message" => "User creada."));
+        echo json_encode(array("message" => "Usuario creada."));
     } else {
         echo "Oops! Something went wrong. Please try again later.";
     }

@@ -1,9 +1,9 @@
 <?php
 // required headers
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
-header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
+// header("Content-Type: application/json; charset=UTF-8");
+// header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+// header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
 
 // ini_set("log_errors", 1);
 // ini_set("error_log", "./php-error.log");
@@ -13,8 +13,9 @@ try {
     // database connection will be here
     // include database and object files
     include_once '../_Config/config.php';
+    include_once '../_Config/cors_handler.php';
 
-    file_put_contents("./php-error.log", "1", FILE_APPEND);
+    //file_put_contents("./php-error.log", "1", FILE_APPEND);
 
     // instantiate database and product object
     $database = new Database();
@@ -23,22 +24,22 @@ try {
     // Prepare a select statement
     $sql = "SELECT * FROM Productos";
 
-    file_put_contents("./log.log", "2", FILE_APPEND);
+    //file_put_contents("./log.log", "2", FILE_APPEND);
 
     if ($result = mysqli_query($db, $sql)) {
 
-        file_put_contents("./log.log", "3", FILE_APPEND);
+        //file_put_contents("./log.log", "3", FILE_APPEND);
 
         $productos_arr = array();
         $productos_arr["productos"] = array();
 
         if (mysqli_num_rows($result) > 0) {
 
-            file_put_contents("./log.log", "4", FILE_APPEND);
+            //file_put_contents("./log.log", "4", FILE_APPEND);
 
             while ($row = mysqli_fetch_array($result)) {
                 file_put_contents("./log.log", "5", FILE_APPEND);
-
+                echo json_encode($row);
                 extract($row);
 
                 $producto_item = array(
@@ -47,9 +48,11 @@ try {
                     "precio" => $precio,
                     "descripcion" => $descripcion,
                     "in_stock" => $in_stock,
-                    "imagen" => $imagen,
+                    "imagen" => base64_encode($imagen),
                     "blanco_negro" => $blanco_negro
                 );
+
+                file_put_contents("./log.log", "6", FILE_APPEND);
 
                 array_push($productos_arr["productos"], $producto_item);
             }

@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private usersService: UsersService,
-    ) {
+  ) {
     this.buildForm();
   }
 
@@ -27,18 +27,18 @@ export class RegisterComponent implements OnInit {
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      full_name: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', Validators.required],
       // password: ['', [Validators.required, Validators.minLength(6), MyValidators.validPassword]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
-    },{
+    }, {
       validators: MyValidators.matchPasswords
     });
   }
 
-  get fullnameField() {
-    return this.form.get('full_name');
+  get usernameField() {
+    return this.form.get('username');
   }
 
   get emailField() {
@@ -53,12 +53,14 @@ export class RegisterComponent implements OnInit {
     return this.form.get('confirmPassword');
   }
 
-  registerUser(){
+  registerUser() {
     const data = this.form.value;
     console.log(data)
     this.usersService.createUser(data)
-    .subscribe(() => {
+      .subscribe(() => {
+        console.log("a");
+
         this.router.navigate(["/login"]);
-    });
+      });
   }
 }

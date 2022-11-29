@@ -8,7 +8,7 @@
     <div class="col" *ngFor="let product of products">
         <div class="card border-dark">
             <img src="assets/img/camisetaBlanca.png" class="card-img-top">
-            <img src="assets/img/rey_recesvinto.png" alt="" class="card-img-content">
+            <img src="data:image/png;base64,{{product.imagen}}" alt="" class="card-img-content">
             <div class="card-body">
                 <h5 class="card-title ">{{product.nombre}}</h5>
                 <p class="card-text">{{product.descripcion}}</p>

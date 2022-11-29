@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://prog-web-proyecto.000webhostapp.com/api',
+  API_URL: 'http://localhost:81/api',
   firebase: {
     apiKey: "AIzaSyDJHXR2fbK5hARYDq6KUtUAXa6GycxzSOI",
     authDomain: "prog-web-proyecto.firebaseapp.com",
@@ -14,7 +14,8 @@ export const environment = {
     appId: "1:1043220652675:web:c89588f0558767997bb1b6"
   },
   headers: {
-    'Content-Type': 'text/plain'
+    "Access-Control-Allow-Origin": "*",
+    "Content-type": "application/x-www-form-urlencoded"
   }
 };
 
